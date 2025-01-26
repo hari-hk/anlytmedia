@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Ticker from 'react-ticker';
+import Marquee from 'react-fast-marquee';
 
 export default function Home() {
   const cards = [
@@ -44,41 +44,37 @@ export default function Home() {
             <div
               className='absolute  h-full  left-0 w-40 '
               style={{
-                zIndex: 1,
+                zIndex: 2,
                 background:
                   'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
               }}
             ></div>
             <div
-              className='absolute  h-full  right-0 w-40 '
+              className='absolute  h-full  right-0 w-40'
               style={{
-                zIndex: 1,
+                zIndex: 2,
                 background:
                   'linear-gradient(90deg, transparent 0, var(--background) 100%)',
               }}
             ></div>
-            <Ticker speed={5} direction='toLeft' move={true}>
-              {() => {
-                return (
-                  <div className='flex'>
-                    {cards.map((card) => (
-                      <div
-                        key={card.id}
-                        className='rounded-md shadow-md border border-gray-200 overflow-hidden mr-4'
-                      >
-                        <Image
-                          src={card.image}
-                          alt={card.title}
-                          width={400}
-                          height={300}
-                          className='object-cover w-full h-48'
-                        />
-                      </div>
-                    ))}
+            <Marquee>
+              <div className='flex mt-10'>
+                {cards.map((card) => (
+                  <div
+                    key={card.id}
+                    className='rounded-3xl shadow-md border border-blue-500 overflow-hidden mr-4 h-[400px] w-full mr-8'
+                  >
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      className='object-cover size-full'
+                      width={100}
+                      height={100}
+                    />
                   </div>
-                );
-              }}
-            </Ticker>
+                ))}
+              </div>
+            </Marquee>
           </div>
         </section>
       </div>
