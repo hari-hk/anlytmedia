@@ -26,15 +26,15 @@ export default function Home() {
           />
 
           <button className='bg-sky-500 text-white px-4 py-4 rounded-lg'>
-            Contact US
+            Contact us
           </button>
         </header>
 
-        <main className='container flex flex-col items-center justify-center'>
-          <h1 className='text-5xl text-white font-bold max-w-lg text-center leading-tight'>
+        <main className='container flex flex-col items-center max-w-xl justify-center'>
+          <h1 className='text-5xl text-white font-bold  text-center leading-tight'>
             Design That Powers Real Business Growth
           </h1>
-          <p className='text-white text-lg mt-5'>
+          <p className='text-white text-lg mt-5 text-center'>
             Elevating brands through innovative and engaging digital solutions
           </p>
         </main>
@@ -49,7 +49,7 @@ export default function Home() {
                   'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
               }}
             ></div>
-                <div
+            <div
               className='absolute  h-full  right-0 w-40 '
               style={{
                 zIndex: 1,
@@ -73,11 +73,6 @@ export default function Home() {
                           height={300}
                           className='object-cover w-full h-48'
                         />
-                        <div className='bg-white p-4'>
-                          <p className='text-xl font-semibold text-gray-800'>
-                            {card.title}
-                          </p>
-                        </div>
                       </div>
                     ))}
                   </div>
