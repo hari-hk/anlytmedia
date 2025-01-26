@@ -1,7 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
+
+const ModelViewer = dynamic(() => import('../components/ModelViewer'), {
+  ssr: false,
+});
 
 export default function Home() {
   const cards = [
@@ -75,6 +80,46 @@ export default function Home() {
                 ))}
               </div>
             </Marquee>
+          </div>
+        </section>
+
+        <section className='container relative w-full bg-[url(/magic-bg.svg)] bg-cover bg-center bg-no-repeat'>
+          <div className='absolute left-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+            <Image
+              src='/magic-l.svg'
+              alt='anlyt media logo'
+              width={616}
+              height={556}
+              className='object-cover size-full'
+            />
+          </div>
+          <div className='absolute right-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+            <Image
+              src='/magic-r.svg'
+              alt='anlyt media logo'
+              width={100}
+              height={100}
+              className='object-cover size-full'
+            />
+          </div>
+          <section style={{
+            zIndex: 2,
+          }}>
+            <h1 className='text-5xl mt-[12rem] 2xl:mt-[20rem] text-white font-bold  text-center leading-tight'>
+              Looking For A 3D Model
+            </h1>
+            <p className='text-white text-lg mt-5 text-center'>
+              3D Models and AR Experiences for eCommerce
+            </p>
+          </section>
+          <div className='container flex flex-col gap-2 mt-[10rem]'>
+            <ModelViewer
+              src='/media/frame.glb'
+              alt='A 3D model of an object'
+              auto-rotate
+              camera-controls
+              style={{ width: '300px', height: '500px' }}
+            ></ModelViewer>
           </div>
         </section>
       </div>
