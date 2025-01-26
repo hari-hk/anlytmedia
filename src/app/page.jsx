@@ -1,7 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Ticker from 'react-ticker';
+import Marquee from 'react-fast-marquee';
+
+const ModelViewer = dynamic(() => import('../components/ModelViewer'), {
+  ssr: false,
+});
 
 export default function Home() {
   const cards = [
@@ -26,15 +31,15 @@ export default function Home() {
           />
 
           <button className='bg-sky-500 text-white px-4 py-4 rounded-lg'>
-            Contact US
+            Contact us
           </button>
         </header>
 
-        <main className='container flex flex-col items-center justify-center'>
-          <h1 className='text-5xl text-white font-bold max-w-lg text-center leading-tight'>
+        <main className='container flex flex-col items-center max-w-xl justify-center'>
+          <h1 className='text-5xl text-white font-bold  text-center leading-tight'>
             Design That Powers Real Business Growth
           </h1>
-          <p className='text-white text-lg mt-5'>
+          <p className='text-white text-lg mt-5 text-center'>
             Elevating brands through innovative and engaging digital solutions
           </p>
         </main>
@@ -44,46 +49,77 @@ export default function Home() {
             <div
               className='absolute  h-full  left-0 w-40 '
               style={{
-                zIndex: 1,
+                zIndex: 2,
                 background:
                   'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
               }}
             ></div>
-                <div
-              className='absolute  h-full  right-0 w-40 '
+            <div
+              className='absolute  h-full  right-0 w-40'
               style={{
-                zIndex: 1,
+                zIndex: 2,
                 background:
                   'linear-gradient(90deg, transparent 0, var(--background) 100%)',
               }}
             ></div>
-            <Ticker speed={5} direction='toLeft' move={true}>
-              {() => {
-                return (
-                  <div className='flex'>
-                    {cards.map((card) => (
-                      <div
-                        key={card.id}
-                        className='rounded-md shadow-md border border-gray-200 overflow-hidden mr-4'
-                      >
-                        <Image
-                          src={card.image}
-                          alt={card.title}
-                          width={400}
-                          height={300}
-                          className='object-cover w-full h-48'
-                        />
-                        <div className='bg-white p-4'>
-                          <p className='text-xl font-semibold text-gray-800'>
-                            {card.title}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+            <Marquee>
+              <div className='flex mt-10'>
+                {cards.map((card) => (
+                  <div
+                    key={card.id}
+                    className='rounded-3xl shadow-md border border-blue-500 overflow-hidden mr-4 h-[400px] w-full mr-8'
+                  >
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      className='object-cover size-full'
+                      width={100}
+                      height={100}
+                    />
                   </div>
-                );
-              }}
-            </Ticker>
+                ))}
+              </div>
+            </Marquee>
+          </div>
+        </section>
+
+        <section className='container relative w-full bg-[url(/magic-bg.svg)] bg-cover bg-center bg-no-repeat'>
+          <div className='absolute left-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+            <Image
+              src='/magic-l.svg'
+              alt='anlyt media logo'
+              width={616}
+              height={556}
+              className='object-cover size-full'
+            />
+          </div>
+          <div className='absolute right-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+            <Image
+              src='/magic-r.svg'
+              alt='anlyt media logo'
+              width={100}
+              height={100}
+              className='object-cover size-full'
+            />
+          </div>
+          <section style={{
+            zIndex: 2,
+          }}>
+            <h1 className='text-5xl mt-[12rem] 2xl:mt-[20rem] text-white font-bold  text-center leading-tight'>
+              Looking For A 3D Model
+            </h1>
+            <p className='text-white text-lg mt-5 text-center'>
+              3D Models and AR Experiences for eCommerce
+            </p>
+          </section>
+          <div className='container flex flex-col gap-2 mt-[10rem]'>
+            <ModelViewer
+              src='/media/frame.glb'
+              alt='A 3D model of an object'
+              auto-rotate
+              camera-controls
+              style={{ width: '300px', height: '500px' }}
+            ></ModelViewer>
           </div>
         </section>
       </div>
