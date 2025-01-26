@@ -12,7 +12,7 @@ export default function Home() {
   ];
   return (
     <>
-      <div className='absolute -z-10 hue-rotate-340'>
+      <div className='absolute -z-10 hue-rotate-340 w-full flex justify-center'>
         <img src='/bg-header.svg' alt='anlyt media logo' />
       </div>
       <div className='min-h-screen  flex flex-col  items-center'>
@@ -39,12 +39,28 @@ export default function Home() {
           </p>
         </main>
 
-        <section className='container flex flex-col items-center justify-center mt-10'>
-          <div className='w-full overflow-hidden '>
-            <Ticker speed={15} direction='toLeft'>
+        <section className='container flex flex-col items-center justify-center mt-10 relative'>
+          <div className='w-full overflow-hidden'>
+            <div
+              className='absolute  h-full  left-0 w-40 '
+              style={{
+                zIndex: 1,
+                background:
+                  'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
+              }}
+            ></div>
+                <div
+              className='absolute  h-full  right-0 w-40 '
+              style={{
+                zIndex: 1,
+                background:
+                  'linear-gradient(90deg, transparent 0, var(--background) 100%)',
+              }}
+            ></div>
+            <Ticker speed={5} direction='toLeft' move={true}>
               {() => {
                 return (
-                  <div className='flex '>
+                  <div className='flex'>
                     {cards.map((card) => (
                       <div
                         key={card.id}
@@ -58,9 +74,9 @@ export default function Home() {
                           className='object-cover w-full h-48'
                         />
                         <div className='bg-white p-4'>
-                          <h2 className='text-xl font-semibold text-gray-800'>
+                          <p className='text-xl font-semibold text-gray-800'>
                             {card.title}
-                          </h2>
+                          </p>
                         </div>
                       </div>
                     ))}
