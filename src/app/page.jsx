@@ -10,7 +10,12 @@ const ModelViewer = dynamic(() => import('../components/ModelViewer'), {
 
 export default function Home() {
   const cards = [
-    { id: 1, title: 'Card 1', image: '/media/2Cover.jpg' },
+    {
+      id: 1,
+      title: 'Card 1',
+      image:
+        'https://lh3.googleusercontent.com/pw/AP1GczNONJuUtISRGs3DW3pGCrVaD7ph0-U9RxmgJItP-WRGTkJtJxM5ujugz0jc9oG5CAPyqN1JoiDZaCBYKbOvOuHQCJMtbnGuWi67U1hDiOQ2Ma-nFoIs=w2400',
+    },
     { id: 2, title: 'Card 2', image: '/media/22.png' },
     { id: 3, title: 'Card 3', image: '/media/baby.png' },
     { id: 4, title: 'Card 4', image: '/media/panasonic.jpg' },
