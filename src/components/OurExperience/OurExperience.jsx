@@ -12,8 +12,10 @@ const ModelViewer = dynamic(() => import('../ModelViewer'), {
 export default function OurExperience() {
   const [cards, setCards] = useState([]);
   useEffect(() => {
-    console.log('avasd', process.env.BLOB_READ_WRITE_TOKEN);
-    list()
+    list({
+      token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
+      dir: 'main_media',
+    })
       .then((res) => {
         setCards(
           res?.blobs.filter(
