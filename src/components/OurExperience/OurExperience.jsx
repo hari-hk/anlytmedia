@@ -1,27 +1,28 @@
 'use client';
 
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-// import { list } from '@vercel/blob';
+import { list } from '@vercel/blob';
 
 const ModelViewer = dynamic(() => import('../ModelViewer'), {
   ssr: false,
 });
 
 export default function OurExperience() {
-  // const [cards, setCards] = useState([]);
-  // useEffect(() => {
-  //   list({
-  //     token: process.env.NEXT_PUBLIC_VERCEL_TOKEN,
-  //     access: 'public',
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //       setCards(res?.blobs ?? []);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    console.log('avasd', process.env.BLOB_READ_WRITE_TOKEN);
+    list()
+      .then((res) => {
+        setCards(
+          res?.blobs.filter(
+            (item) => item?.size && item?.pathname?.endsWith('.glb')
+          ) ?? []
+        );
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <section className='container relative w-full '>
@@ -82,14 +83,22 @@ export default function OurExperience() {
           3D Models and AR Experiences for eCommerce
         </p>
       </section>
-      <div className='container flex flex-col gap-2 mt-[10rem]'>
-        <ModelViewer
-          src='/media/frame.glb'
-          alt='A 3D model of an object'
-          auto-rotate
-          camera-controls
-          style={{ width: '300px', height: '500px' }}
-        ></ModelViewer>
+      <div className='container flex flex-col md:flex-row my-[3rem] md:my-[5rem] p-2 gap-4'>
+        {cards.map((card, index) => (
+          <div
+            key={`modal-3d-${index}`}
+            className='flex bg-white-200 rounded-3xl shadow-md border border-blue-500  overflow-hidden h-[400px] w-full items-center justify-center'
+          >
+            <ModelViewer
+              src={card.url}
+              alt='A 3D model of an object'
+              auto-rotate
+              camera-controls
+              disable-zoom
+              style={{ width: '100%', height: '100%' }}
+            ></ModelViewer>
+          </div>
+        ))}
       </div>
     </section>
   );
