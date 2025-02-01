@@ -12,19 +12,18 @@ const ModelViewer = dynamic(() => import('../ModelViewer'), {
 export default function OurExperience() {
   const [cards, setCards] = useState([]);
   useEffect(() => {
-    list({
-      token: process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN,
-      dir: 'main_media',
-    })
-      .then((res) => {
-        setCards(
-          res?.blobs.filter(
-            (item) => item?.size && item?.pathname?.endsWith('.glb')
-          ) ?? []
-        );
-      })
-      .catch((err) => console.log(err));
+    fetchModels();
   }, []);
+  const fetchModels = async () => {
+    try {
+      const response = await fetch('/api/models');
+      const data = await response?.json();
+      const cardData = data.blobs.filter((blob) => blob.url.includes('.glb'));
+      setCards(cardData);
+    } catch (error) {
+      console.error('Failed to fetch greeting:', error);
+    }
+  };
 
   return (
     <section className='container relative w-full '>
