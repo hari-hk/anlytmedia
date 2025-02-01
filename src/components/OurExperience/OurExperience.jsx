@@ -1,30 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { list } from '@vercel/blob';
-
-const ModelViewer = dynamic(() => import('../ModelViewer'), {
-  ssr: false,
-});
 
 export default function OurExperience() {
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    fetchModels();
-  }, []);
-  const fetchModels = async () => {
-    try {
-      const response = await fetch('/api/models');
-      const data = await response?.json();
-      const cardData = data.blobs.filter((blob) => blob.url.includes('.glb'));
-      setCards(cardData);
-    } catch (error) {
-      console.error('Failed to fetch greeting:', error);
-    }
-  };
-
+  const cardData = [
+    {
+      title: 'Panasonic RP-HF100M-K On Ear Headphone',
+      src: 'https://sketchfab.com/models/eade9f6789ee47d38bdaa94a2835cba5/embed',
+    },
+    {
+      title: 'X Rocker Adrenaline',
+      src: 'https://sketchfab.com/models/14eb55d7069748889a27e9b06709dae4/embed',
+    },
+  ];
   return (
     <section className='container relative w-full '>
       <div
@@ -84,20 +72,29 @@ export default function OurExperience() {
           3D Models and AR Experiences for eCommerce
         </p>
       </section>
-      <div className='container flex flex-col md:flex-row my-[3rem] md:my-[5rem] p-2 gap-4'>
-        {cards.map((card, index) => (
+      <div
+        className='container flex flex-col md:flex-row my-[3rem] md:my-[9rem] p-2 gap-4'
+        style={{ zIndex: 90 }}
+      >
+        {cardData.map((card, index) => (
           <div
-            key={`modal-3d-${index}`}
-            className='flex bg-white-200 rounded-3xl shadow-md border border-blue-500  overflow-hidden h-[400px] w-full items-center justify-center'
+            key={`card-data-${index}`}
+            className='flex bg-white-200 rounded-3xl shadow-md border border-blue-500  overflow-hidden h-[500px] w-full items-center justify-center'
           >
-            <ModelViewer
-              src={card.url}
-              alt='A 3D model of an object'
-              auto-rotate
-              camera-controls
-              disable-zoom
-              style={{ width: '100%', height: '100%' }}
-            ></ModelViewer>
+            <iframe
+              title={card.title}
+              allowFullScreen
+              frameBorder='0'
+              mozallowfullscreen='true'
+              webkitallowfullscreen='true'
+              allow='autoplay; fullscreen; xr-spatial-tracking'
+              xr-spatial-tracking="true"
+              execution-while-out-of-viewport="true"
+              execution-while-not-rendered="true"
+              web-share="true"
+              src={card.src}
+              className='w-full h-full'
+            ></iframe>
           </div>
         ))}
       </div>
