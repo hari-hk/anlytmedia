@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 
@@ -13,7 +15,12 @@ export default function Intro() {
           priority
         />
 
-        <button className='bg-sky-500 text-white px-4 py-4 rounded-lg'>
+        <button
+          className='bg-sky-500 text-white px-4 py-4 rounded-lg'
+          onClick={() =>
+            window.open('https://forms.gle/zaesT8XVXkCPn5hUA', '_blank')
+          }
+        >
           Contact us
         </button>
       </header>
