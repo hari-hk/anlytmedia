@@ -16,6 +16,7 @@ export default function Intro({
           width={180}
           height={38}
           priority
+          className='pointer-events-none'
         />
 
         {!hideContactButton && (

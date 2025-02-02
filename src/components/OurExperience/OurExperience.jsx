@@ -26,13 +26,13 @@ export default function OurExperience() {
           alt='imag back'
           width={100}
           height={100}
-          className='size-full'
+          className='size-full pointer-events-none'
         ></Image>
       </div>
 
-      <div className='absolute left-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+      <div className='absolute left-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px] pointer-events-none'>
         <div
-          className='absolute  h-full  left-0 w-40 '
+          className='absolute  h-full  left-0 w-40  pointer-events-none'
           style={{
             zIndex: 2,
             background:
@@ -44,10 +44,10 @@ export default function OurExperience() {
           alt='anlyt media logo'
           width={616}
           height={556}
-          className='object-cover size-full'
+          className='object-cover size-full pointer-events-none'
         />
       </div>
-      <div className='absolute right-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px]'>
+      <div className='absolute right-0 hidden lg:block lg:w-[402px] md:h-[363px] 2xl:w-[616px] 2xl:h-[556px] pointer-events-none'>
         <div
           className='absolute  h-full  right-0 w-40'
           style={{
@@ -61,7 +61,7 @@ export default function OurExperience() {
           alt='anlyt media logo'
           width={100}
           height={100}
-          className='object-cover size-full'
+          className='object-cover size-full pointer-events-none'
         />
       </div>
       <section>
@@ -88,10 +88,10 @@ export default function OurExperience() {
               mozallowfullscreen='true'
               webkitallowfullscreen='true'
               allow='autoplay; fullscreen; xr-spatial-tracking'
-              xr-spatial-tracking="true"
-              execution-while-out-of-viewport="true"
-              execution-while-not-rendered="true"
-              web-share="true"
+              xr-spatial-tracking='true'
+              execution-while-out-of-viewport='true'
+              execution-while-not-rendered='true'
+              web-share='true'
               src={card.src}
               className='w-full h-full'
             ></iframe>

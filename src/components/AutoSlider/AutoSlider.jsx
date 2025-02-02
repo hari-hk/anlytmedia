@@ -38,7 +38,7 @@ export default function AutoSlider() {
     <section className='container flex flex-col items-center justify-center mt-10 relative'>
       <div className='w-full overflow-hidden '>
         <div
-          className='absolute  h-full  left-0 w-40  hidden md:block'
+          className='absolute  h-full  left-0 w-40  hidden md:block pointer-events-none'
           style={{
             zIndex: 2,
             background:
@@ -46,7 +46,7 @@ export default function AutoSlider() {
           }}
         ></div>
         <div
-          className='absolute  h-full  right-0 w-40 hidden md:block'
+          className='absolute  h-full  right-0 w-40 hidden md:block pointer-events-none'
           style={{
             zIndex: 2,
             background:
@@ -63,7 +63,7 @@ export default function AutoSlider() {
                 <Image
                   src={card?.url}
                   alt={card?.title ?? `cover-image-${index}`}
-                  className='object-cover size-full object-center'
+                  className='object-cover size-full object-center pointer-events-none'
                   width={500}
                   height={500}
                 />
