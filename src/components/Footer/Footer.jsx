@@ -31,10 +31,10 @@ export default function Footer() {
                 Our Social Handels
               </p>
 
-              <div className='flex gap-2 py-2'>
+              <div className='flex gap-4 py-2'>
                 <a
                   href='https://www.instagram.com/anlytmedia/'
-                  className='grayscale hover:grayscale-0'
+                  className='grayscale hover:grayscale-0 bg-[#252525] rounded-md p-1'
                 >
                   <Image
                     src='/social-instagram.svg'
@@ -47,7 +47,7 @@ export default function Footer() {
                 </a>
                 <a
                   href='https://www.facebook.com/anlytmedia'
-                  className='grayscale hover:grayscale-0'
+                  className='grayscale hover:grayscale-0 bg-[#252525] rounded-md p-1'
                 >
                   <Image
                     src='/social-facebook.svg'
@@ -60,7 +60,7 @@ export default function Footer() {
                 </a>
                 <a
                   href='https://www.linkedin.com/company/anlytmedia'
-                  className='grayscale hover:grayscale-0'
+                  className='grayscale hover:grayscale-0 bg-[#252525] rounded-md p-1'
                 >
                   <Image
                     src='/social-linkedin.svg'
