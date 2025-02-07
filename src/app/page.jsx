@@ -2,6 +2,7 @@ import Intro from '@/components/Intro';
 import AutoSlider from '@/components/AutoSlider';
 import OurExperience from '@/components/OurExperience';
 import Head from 'next/head';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -49,6 +50,7 @@ export default function Home() {
         <Intro />
         <AutoSlider />
         <OurExperience />
+        <Footer />
       </div>
     </>
   );
