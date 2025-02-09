@@ -21,7 +21,7 @@ export default function Card() {
             <h2 className='text-2xl font-semibold text-teal-600 mt-[3rem]'>
               Ananda Sayanan
             </h2>
-            <p className='text-gray-600'>Founder at Anlyt Media</p>
+            <p className='text-gray-600'>Creative Director at Anlyt Media</p>
 
             <div className='w-full h-px bg-gray-300 my-4'></div>
 
