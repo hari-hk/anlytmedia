@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import StarryNight from '../StarryNight/StarryNight';
 
 export default function OurExperience() {
   const cardData = [
@@ -39,6 +40,15 @@ export default function OurExperience() {
               'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
           }}
         ></div>
+          <StarryNight
+          customStyle={{
+            position: 'absolute',
+            top: '0',
+            left:'0',
+            width: '100%',
+            height: '100%',
+          }}
+        />
         <Image
           src='/magic-l.svg'
           alt='anlyt media logo'
@@ -56,6 +66,15 @@ export default function OurExperience() {
               'linear-gradient(90deg, transparent 0, var(--background) 100%)',
           }}
         ></div>
+        <StarryNight
+          customStyle={{
+            position: 'absolute',
+            top: '0',
+            right:'0',
+            width: '100%',
+            height: '100%',
+          }}
+        />
         <Image
           src='/magic-r.svg'
           alt='anlyt media logo'
