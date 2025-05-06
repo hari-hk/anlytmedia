@@ -75,7 +75,7 @@ const StarryNight = ({
         gsap.to(star, {
           opacity: 1,
           scale: 1.5,
-          boxShadow: `0px 0px 10px 5px ${starColor}`,
+        //   boxShadow: `0px 0px 10px 5px ${starColor}`,
           duration: speed, // Controls the sparkle effect
           repeat: -1, // Loop infinitely
           yoyo: true, // Make the animation go back and forth
