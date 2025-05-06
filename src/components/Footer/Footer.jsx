@@ -26,6 +26,19 @@ export default function Footer() {
               to your brand.
             </p>
 
+            <a
+              href='tel:+917092828370'
+              className='text-base md:text-xl text-grey-900 text-left mt-4'
+            >
+              +91 70 92 82 83 70
+            </a>
+            <a
+              href='mailto:hello@anlytmedia.in'
+              className='text-base md:text-xl text-grey-900 text-left mt-1'
+            >
+              hello@anlytmedia.in
+            </a>
+
             <p className='text-base md:text-xl mt-6 font-semibold'>
               Our Social Handels
             </p>
