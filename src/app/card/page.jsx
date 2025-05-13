@@ -34,6 +34,7 @@ export default function Card() {
       }
     );
   }, []);
+  
   const handleAddToContact = () => {
     gsap.to(addButtonRef.current, {
       scale: 0.9,
@@ -42,15 +43,25 @@ export default function Card() {
       repeat: 1,
       ease: 'power1.inOut',
     });
-    const blob = new Blob([vCardData], { type: 'text/vcard' });
-    const url = URL.createObjectURL(blob);
+    try {
+      if (typeof Blob !== 'undefined') {
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'contact.vcf';
-    a.click();
-
-    URL.revokeObjectURL(url);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'contact.vcf';
+        a.click();
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 1000); // Delay of 1 second to ensure download completion
+      } else {
+        alert('Your browser does not support the Blob API. Please update your browser to use this feature.');
+      }
+    } catch (error) {
+      console.error('An error occurred while creating or downloading the vCard:', error);
+      alert('An error occurred while processing your request. Please try again.');
+    }
   };
 
   return (
@@ -73,12 +84,13 @@ export default function Card() {
             <h2 className='text-2xl font-semibold text-white mt-[3rem] '>
               Ananda Sayanan
             </h2>
-            <p className='text-white-600'>Creative Director at Anlyt Media</p>
+            <p className='text-white'>Creative Director at Anlyt Media</p>
 
             <div className='w-full h-px bg-gray-300 my-4'></div>
 
-            <ul className='space-y-3 text-sm text-white-600'>
+            <ul className='space-y-3 text-sm text-white'>
               <li className='flex items-center gap-2 '>
+                <a className='flex items-center gap-2 ' href='emailto:hello@anlytmedia.in'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -91,6 +103,7 @@ export default function Card() {
                   <path d='M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791' />
                 </svg>
                 hello@anlytmedia.in
+                </a>
               </li>
               <li className='flex items-start justify-start gap-2'>
                 <svg
@@ -104,8 +117,8 @@ export default function Card() {
                   <path d='M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z' />
                 </svg>
                 <div className='flex flex-col  gap-1'>
-                  <Link href='tel:+917092828370'>+91 709 282 8370</Link>
-                  <Link href='tel:+918428524861'>+91 842 852 4861</Link>
+                  <a href='tel:+917092828370'>+91 709 282 8370</a>
+                  <a href='tel:+918428524861'>+91 842 852 4861</a>
                 </div>
               </li>
               <li className='flex items-start justify-start gap-2 text-left'>
@@ -127,18 +140,18 @@ export default function Card() {
       </div>
 
       <button
-        onClick={handleAddToContact}
+        className='w-[350px] shadow-xl border border-gray-200 bg-slate-500 rounded-lg mt-6 p-2'
         ref={addButtonRef}
-        className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg mt-6 p-2'
+        onClick={handleAddToContact}
       >
         Add to contact
       </button>
 
-      <p className='text-2xl font-bold mt-6 mb-2'> Social Media</p>
+      <h2 className='text-2xl font-bold mt-6 mb-2'> Social Media</h2>
       <div className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg'>
         <div className='p-6'>
           <div className='flex flex-row items-center gap-2 wrap text-center justify-around '>
-            {/*  a circle with bounce effect */}
+            {/* A circular element with a bounce effect applied when hovered or interacted with, achieved using CSS animations or transitions */}
 
             <div className='size-10 border drop-shadow-md shadow-slate-100  rounded-full flex items-center justify-center '>
               <Link href='https://www.instagram.com/anlytmedia'>
