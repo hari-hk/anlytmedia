@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 
-
 const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
@@ -142,7 +141,7 @@ export default function Card() {
             {/*  a circle with bounce effect */}
 
             <div className='size-10 border drop-shadow-md shadow-slate-100  rounded-full flex items-center justify-center '>
-              <Link href='https://www.linkedin.com/company/anlytmedia'>
+              <Link href='https://www.instagram.com/anlytmedia'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -156,7 +155,7 @@ export default function Card() {
               </Link>
             </div>
             <div className='size-10 border drop-shadow-md shadow-slate-100  rounded-full flex items-center justify-center '>
-              <Link href='https://www.instagram.com/anlytmedia'>
+              <Link href='https://www.facebook.com/anlytmedia'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -170,7 +169,7 @@ export default function Card() {
               </Link>
             </div>
             <div className='size-10 border drop-shadow-md shadow-slate-100  rounded-full flex items-center justify-center '>
-              <Link href='https://www.facebook.com/anlytmedia'>
+              <Link href='https://www.linkedin.com/company/anlytmedia'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
