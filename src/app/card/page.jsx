@@ -1,7 +1,10 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import gsap from 'gsap';
+
 
 const vCardData = `
 BEGIN:VCARD
@@ -17,7 +20,29 @@ END:VCARD
 `.trim();
 
 export default function Card() {
+  const imageRef = useRef(null);
+  const addButtonRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      imageRef.current,
+      { scale: 0, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
+      }
+    );
+  }, []);
   const handleAddToContact = () => {
+    gsap.to(addButtonRef.current, {
+      scale: 0.9,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 1,
+      ease: 'power1.inOut',
+    });
     const blob = new Blob([vCardData], { type: 'text/vcard' });
     const url = URL.createObjectURL(blob);
 
@@ -34,7 +59,10 @@ export default function Card() {
       <div className='w-[350px] shadow-xl border border-gray-200 bg-green rounded-lg'>
         <div className='p-6'>
           <div className='flex flex-col items-center text-center relative'>
-            <div className='absolute w-24 shadow-xl h-24 bg-slate-700 rounded-full mb-4 -top-16'>
+            <div
+              className='absolute w-24 shadow-xl h-24 bg-slate-700 rounded-full mb-4 -top-16'
+              ref={imageRef}
+            >
               <Image
                 src='/app-bar-logo.svg'
                 alt='avatar'
@@ -101,6 +129,7 @@ export default function Card() {
 
       <button
         onClick={handleAddToContact}
+        ref={addButtonRef}
         className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg mt-6 p-2'
       >
         Add to contact
