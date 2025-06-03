@@ -1,0 +1,7 @@
+.card-bg {
+  background: #2c3e50;
+  background: linear-gradient(to right, #2c3e50, #008080);
+  background: radial-gradient(ellipse at top, #2c3e50, transparent),
+    radial-gradient(ellipse at bottom, #004a4a, transparent),
+    radial-gradient(ellipse at center, #2c3e50, transparent);
+}

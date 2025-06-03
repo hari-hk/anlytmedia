@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
+import './style.css';
 
 const vCardData = `
 BEGIN:VCARD
@@ -65,7 +66,7 @@ export default function Card() {
   };
 
   return (
-    <div className='min-h-screen  flex flex-col items-center justify-center p-4 linear-gradient bg-gradient-to-b from-slate-600 to-slate-800'>
+    <div className='min-h-screen  flex flex-col items-center justify-center p-4 linear-gradient bg-gradient-to-b from-slate-600 to-slate-800 card-bg'>
       <div className='w-[350px] shadow-xl border border-gray-200 bg-green rounded-lg'>
         <div className='p-6'>
           <div className='flex flex-col items-center text-center relative'>
