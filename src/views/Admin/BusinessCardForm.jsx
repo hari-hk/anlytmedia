@@ -7,6 +7,7 @@ const initialData = {
   position: 'Creative Director at Anlyt Media',
   org: 'Anlyt Media',
   email: 'hello@anlytmedia.in',
+  logo: '',
   phones: ['+917092828370', '+918428524861'],
   address: '18/16/3, Elavuvilai Jn, Marthandam, TN 629191, India',
   bgColor: 'from-slate-600 to-slate-800',
@@ -45,13 +46,13 @@ const BusinessCardForm = () => {
   };
 
   return (
-    <form className='max-w-xl mx-auto p-6 bg-white rounded-lg shadow space-y-4 text-gray-800 mt-2'>
-      <h2 className='text-xl font-bold'>Edit Business Card</h2>
+    <form className='max-w-xl flex gap-4 flex-col mx-auto p-6 border-gray-200 rounded-lg shadow-sm sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700  mt-2'>
+      <h2 className='text-xl font-bold mb-2'>Edit Business Card</h2>
 
       <div>
-        <label className="block mb-1">Full Name</label>
+        <label className='block mb-1'>Full Name</label>
         <input
-          className='w-full border p-2 rounded'
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
           type='text'
           value={formData.name}
           onChange={(e) => updateField('name', e.target.value)}
@@ -59,9 +60,9 @@ const BusinessCardForm = () => {
       </div>
 
       <div>
-        <label className="block mb-1">Position</label>
+        <label className='block mb-1'>Position</label>
         <input
-          className='w-full border p-2 rounded'
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
           type='text'
           value={formData.position}
           onChange={(e) => updateField('position', e.target.value)}
@@ -69,9 +70,19 @@ const BusinessCardForm = () => {
       </div>
 
       <div>
-        <label className="block mb-1">Organization</label>
+        <label className='block mb-1'>logo</label>
         <input
-          className='w-full border p-2 rounded'
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
+          type='text'
+          value={formData.logo}
+          onChange={(e) => updateField('org', e.target.value)}
+        />
+      </div>
+
+      <div>
+        <label className='block mb-1'>Organization</label>
+        <input
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
           type='text'
           value={formData.org}
           onChange={(e) => updateField('org', e.target.value)}
@@ -79,9 +90,9 @@ const BusinessCardForm = () => {
       </div>
 
       <div>
-        <label className="block mb-1">Email</label>
+        <label className='block mb-1'>Email</label>
         <input
-          className='w-full border p-2 rounded'
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
           type='email'
           value={formData.email}
           onChange={(e) => updateField('email', e.target.value)}
@@ -89,9 +100,9 @@ const BusinessCardForm = () => {
       </div>
 
       <div>
-        <label className="block mb-1">Address</label>
+        <label className='block mb-1'>Address</label>
         <textarea
-          className='w-full border p-2 rounded'
+          className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
           value={formData.address}
           onChange={(e) => updateField('address', e.target.value)}
         />
@@ -101,9 +112,9 @@ const BusinessCardForm = () => {
         <label className='block font-medium mb-1'>Phone Numbers</label>
         {formData.phones.map((phone, index) => (
           <div key={index}>
-            <label className="block text-sm mb-1">Phone {index + 1}</label>
+            <label className='block text-sm mb-1'>Phone {index + 1}</label>
             <input
-              className='w-full border p-2 rounded mb-2'
+              className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
               type='text'
               value={phone}
               onChange={(e) => updatePhone(index, e.target.value)}
@@ -114,45 +125,45 @@ const BusinessCardForm = () => {
 
       <div className='grid grid-cols-2 gap-4'>
         <div>
-          <label className="block mb-1">Background Gradient</label>
+          <label className='block mb-1'>Background Gradient</label>
           <input
-            className='border p-2 rounded w-full'
+            className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
             type='text'
             value={formData.bgColor}
             onChange={(e) => updateField('bgColor', e.target.value)}
           />
         </div>
         <div>
-          <label className="block mb-1">Logo Background</label>
+          <label className='block mb-1'>Logo Background</label>
           <input
-            className='border p-2 rounded w-full'
+            className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
             type='text'
             value={formData.bgLogo}
             onChange={(e) => updateField('bgLogo', e.target.value)}
           />
         </div>
         <div>
-          <label className="block mb-1">Text Color</label>
+          <label className='block mb-1'>Text Color</label>
           <input
-            className='border p-2 rounded w-full'
+            className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
             type='text'
             value={formData.textColor}
             onChange={(e) => updateField('textColor', e.target.value)}
           />
         </div>
         <div>
-          <label className="block mb-1">Card Color</label>
+          <label className='block mb-1'>Card Color</label>
           <input
-            className='border p-2 rounded w-full'
+            className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
             type='text'
             value={formData.cardColor}
             onChange={(e) => updateField('cardColor', e.target.value)}
           />
         </div>
         <div>
-          <label className="block mb-1">Button Color</label>
+          <label className='block mb-1'>Button Color</label>
           <input
-            className='border p-2 rounded w-full'
+            className='w-full border p-2 rounded bg-grey-50 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'
             type='text'
             value={formData.buttonColor}
             onChange={(e) => updateField('buttonColor', e.target.value)}
@@ -187,7 +198,7 @@ const BusinessCardForm = () => {
           <label className='block font-medium mb-1'>Social Links</label>
           {Object.entries(formData.socialLinks).map(([platform, link]) => (
             <div key={platform}>
-              <label className="block text-sm mb-1 capitalize">
+              <label className='block text-sm mb-1 capitalize'>
                 {platform}
               </label>
               <input
