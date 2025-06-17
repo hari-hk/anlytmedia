@@ -27,8 +27,12 @@ export default function RootLayout({ children }) {
       >
         {children}
       </body>
-      <Analytics />
-      <SpeedInsights />
+      {typeof window !== 'undefined' && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
     </html>
   );
 }
