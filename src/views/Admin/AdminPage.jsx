@@ -5,9 +5,7 @@ function AdminPage() {
   return (
     <div className='w-full flex flex-col items-center justify-center bg-gray-900 min-h-screen'>
       <div className='w-full  min-h-screen p-4'>
-        <AppHeader />
-        <ContactList />
-        {/* <BusinessCardForm /> */}
+        <BusinessCardList />
       </div>
     </div>
   );
@@ -32,7 +30,7 @@ const contacts = [
   // Add more contacts here
 ];
 
-const ContactCard = ({ name, email, phone }) => (
+const BusinessCardItem = ({ name, email, phone }) => (
   <div className='w-full bg-white rounded-xl shadow-md p-1 border'>
     <div className='flex flex-row items-center gap-2'>
       <img
@@ -50,11 +48,11 @@ const ContactCard = ({ name, email, phone }) => (
   </div>
 );
 
-const ContactList = () => {
+const BusinessCardList = () => {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {contacts.map((contact, index) => (
-        <ContactCard key={index} {...contact} />
+        <BusinessCardItem key={index} {...contact} />
       ))}
     </div>
   );
