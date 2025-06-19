@@ -55,7 +55,7 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
     post: (endpoint, body = {}, headers = {}) =>
       makeFetch(endpoint, {
         method: 'POST',
-        body,
+        body: JSON.stringify(body),
         headers,
       }),
 

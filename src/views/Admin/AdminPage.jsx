@@ -1,44 +1,44 @@
-import AppHeader from '@/components/AppHeader';
-import BusinessCardForm from './BusinessCardForm';
+'use client';
+
+import api from '@/lib/fetcher';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 function AdminPage() {
+  const [businessCards, setBusinessCards] = useState([]);
+  const fetchBusinessCards = async () => {
+    try {
+      const { data } = await api.get('/business-card');
+      if (data.length > 0) {
+        setBusinessCards(data);
+      }
+    } catch (error) {
+      console.error('Error fetching business cards:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBusinessCards();
+  }, []);
+
   return (
-    <div className='w-full flex flex-col items-center justify-center bg-gray-900 min-h-screen'>
-      <div className='w-full  min-h-screen p-4'>
-        <AppHeader />
-        <ContactList />
-        {/* <BusinessCardForm /> */}
+    <div className='w-full flex flex-col items-center justify-center bg-gray-900'>
+      <div className='w-full p-4'>
+        <BusinessCardList list={businessCards} />
       </div>
     </div>
   );
 }
 
-const contacts = [
-  {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '+91 98765 43210',
-  },
-  {
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    phone: '+91 12345 67890',
-  },
-  {
-    name: 'Rahul Kumar',
-    email: 'rahul@example.com',
-    phone: '+91 99887 77665',
-  },
-  // Add more contacts here
-];
-
-const ContactCard = ({ name, email, phone }) => (
+const BusinessCardItem = ({ name, email, phone, logo }) => (
   <div className='w-full bg-white rounded-xl shadow-md p-1 border'>
     <div className='flex flex-row items-center gap-2'>
-      <img
-        class='w-20 h-20 rounded-md'
-        src='https://lh3.googleusercontent.com/pw/AP1GczPoopKVE2b5sMgnOHMLFaS4BZZS6JHZJaIvYDHc-_v2AAk848gV_htKAPSNKMnWm4H4wMAjr599lIT9RMoVXGdjhUZSR9U0ul-9Y2XUXXcyLFaKtg=w2400'
-        alt='Default avatar'
+      <Image
+        height={80}
+        width={80}
+        alt='Business Card Logo'
+        className='w-20 h-20 rounded-md'
+        src={logo || '/app-bar-logo.svg'}
       />
 
       <section className='flex flex-col items-start h-full'>
@@ -50,11 +50,11 @@ const ContactCard = ({ name, email, phone }) => (
   </div>
 );
 
-const ContactList = () => {
+const BusinessCardList = ({ list = [] }) => {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-      {contacts.map((contact, index) => (
-        <ContactCard key={index} {...contact} />
+      {list.map((contact, index) => (
+        <BusinessCardItem key={index} {...contact} />
       ))}
     </div>
   );
