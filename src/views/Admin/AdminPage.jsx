@@ -3,8 +3,8 @@ import BusinessCardForm from './BusinessCardForm';
 
 function AdminPage() {
   return (
-    <div className='w-full flex flex-col items-center justify-center bg-gray-900 min-h-screen'>
-      <div className='w-full  min-h-screen p-4'>
+    <div className='w-full flex flex-col items-center justify-center bg-gray-900'>
+      <div className='w-full p-4'>
         <BusinessCardList />
       </div>
     </div>
@@ -34,7 +34,7 @@ const BusinessCardItem = ({ name, email, phone }) => (
   <div className='w-full bg-white rounded-xl shadow-md p-1 border'>
     <div className='flex flex-row items-center gap-2'>
       <img
-        class='w-20 h-20 rounded-md'
+        className='w-20 h-20 rounded-md'
         src='https://lh3.googleusercontent.com/pw/AP1GczPoopKVE2b5sMgnOHMLFaS4BZZS6JHZJaIvYDHc-_v2AAk848gV_htKAPSNKMnWm4H4wMAjr599lIT9RMoVXGdjhUZSR9U0ul-9Y2XUXXcyLFaKtg=w2400'
         alt='Default avatar'
       />
