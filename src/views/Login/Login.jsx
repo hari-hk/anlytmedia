@@ -1,6 +1,7 @@
 'use client';
 
 import api from '@/lib/fetcher';
+import { supabase } from '@/lib/supabaseClient';
 import { memo } from 'react';
 
 function LoginPage() {
@@ -9,15 +10,24 @@ function LoginPage() {
     const formData = new FormData(event.target);
     const email = formData.get('email');
     const password = formData.get('password');
+
     try {
-      const response = await api.post('/login', {
+      const { data, error } = await api.post('/login', {
         email,
         password,
       });
-      if (response.error) {
+      if (error) {
         throw new Error(response.error.message || 'Login failed');
       }
-      console.log('Login successful:', response);
+
+      if (data?.session) {
+        await supabase.auth.setSession({
+          access_token: data.session.access_token,
+          refresh_token: data.session.refresh_token,
+        });
+      }
+
+      console.log('Login successful:', data);
     } catch (error) {
       console.log('Login error:', error);
     }
