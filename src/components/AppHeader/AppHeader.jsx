@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Logout from '../Logout/Logout';
 
-export default function AppHeader() {
+export default function AppHeader({ isAuthenticated }) {
   return (
     <header className='mb-4 w-full flex flex-row items-center justify-between bg-gray-800 gap-2 p-4 rounded-lg shadow-lg'>
       <Link href='/admin'>
@@ -13,17 +14,17 @@ export default function AppHeader() {
           className='rounded-full'
         />
       </Link>
-      <div className='flex gap-2'>
-        <Link
-          href='/admin/add'
-          className='bg-zinc-300 text-black px-4 py-2 rounded hover:bg-zinc-400'
-        >
-          Add card
-        </Link>
-        <button className='bg-zinc-500 text-white px-4 py-2 rounded hover:bg-zinc-600'>
-          Logout
-        </button>
-      </div>
+      {isAuthenticated && (
+        <div className='flex gap-2'>
+          <Link
+            href='/admin/add'
+            className='bg-zinc-300 text-black px-4 py-2 rounded hover:bg-zinc-400'
+          >
+            Add card
+          </Link>
+          <Logout />
+        </div>
+      )}
     </header>
   );
 }
