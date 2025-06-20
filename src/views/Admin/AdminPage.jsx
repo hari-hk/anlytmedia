@@ -1,20 +1,40 @@
 'use client';
 
-import api from '@/lib/fetcher';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import api from '@/lib/fetcher';
+import toast from 'react-hot-toast';
 
 function AdminPage() {
+  const router = useRouter();
+
   const [businessCards, setBusinessCards] = useState([]);
+
   const fetchBusinessCards = async () => {
     try {
-      const { data } = await api.get('/business-card');
-      if (data.length > 0) {
-        setBusinessCards(data);
+      const response = await api.get('/business-card');
+      if (response.length > 0) {
+        setBusinessCards(response);
       }
     } catch (error) {
       console.error('Error fetching business cards:', error);
     }
+  };
+  const handleDelete = async (id) => {
+    try {
+      const response = await api.delete(`/business-card?id=${id}`);
+      if (response) {
+        toast.success('Business card deleted successfully');
+        setBusinessCards((prev) => prev.filter((card) => card.id !== id));
+      }
+    } catch (error) {
+      toast.error(error.message || 'Failed to delete business card');
+    }
+  };
+
+  const handleEdit = async (id) => {
+    router.push(`/admin/${id}`);
   };
 
   useEffect(() => {
@@ -24,15 +44,27 @@ function AdminPage() {
   return (
     <div className='w-full flex flex-col items-center justify-center bg-gray-900'>
       <div className='w-full p-4'>
-        <BusinessCardList list={businessCards} />
+        <BusinessCardList
+          list={businessCards}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
       </div>
     </div>
   );
 }
 
-const BusinessCardItem = ({ name, email, phone, logo }) => (
+const BusinessCardItem = ({
+  name,
+  email,
+  phone,
+  logo,
+  id,
+  onDelete,
+  onEdit,
+}) => (
   <div className='w-full bg-white rounded-xl shadow-md p-1 border'>
-    <div className='flex flex-row items-center gap-2'>
+    <div className='flex flex-row items-center gap-'>
       <Image
         height={80}
         width={80}
@@ -47,14 +79,37 @@ const BusinessCardItem = ({ name, email, phone, logo }) => (
         <p className='text-sm text-gray-600'>{phone}</p>
       </section>
     </div>
+    <div className='flex flex-row items-center justify-end mt-2 gap-1'>
+      <button
+        onClick={() => {
+          onDelete(id);
+        }}
+        type='button'
+        className='focus:outline-none text-white bg-red-700 hover:bg-red-800  font-small rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 '
+      >
+        Delete
+      </button>
+      <button
+        onClick={() => onEdit(id)}
+        type='button'
+        className='focus:outline-none text-white bg-purple-700 hover:bg-purple-800  font-small rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 '
+      >
+        Edit
+      </button>
+    </div>
   </div>
 );
 
-const BusinessCardList = ({ list = [] }) => {
+const BusinessCardList = ({ list = [], onDelete, onEdit }) => {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
       {list.map((contact, index) => (
-        <BusinessCardItem key={index} {...contact} />
+        <BusinessCardItem
+          key={index}
+          {...contact}
+          onDelete={onDelete}
+          onEdit={onEdit}
+        />
       ))}
     </div>
   );
