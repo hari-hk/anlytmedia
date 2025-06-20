@@ -11,21 +11,20 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
       ...(defaultOptions.headers || {}),
       ...(options.headers || {}),
     };
-
     const config = {
-      method: options.method || 'GET',
+      ...options,
       headers,
       signal: controller.signal,
+      method: options.method || 'GET',
       body: options.body ? JSON.stringify(options.body) : undefined,
-      ...options,
     };
 
     try {
       const res = await fetch(url, config);
       clearTimeout(timeoutId);
 
-      const contentType = res.headers.get('content-type');
-      const data = contentType?.includes('application/json')
+      const contentType = res.headers.get('content-type') || '';
+      const data = contentType.includes('application/json')
         ? await res.json()
         : await res.text();
 
@@ -35,6 +34,7 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
 
       return data;
     } catch (error) {
+      clearTimeout(timeoutId);
       if (error.name === 'AbortError') {
         throw new Error(
           `Request to ${url} aborted after ${TIMEOUT / 1000} seconds`
@@ -55,7 +55,7 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
     post: (endpoint, body = {}, headers = {}) =>
       makeFetch(endpoint, {
         method: 'POST',
-        body: JSON.stringify(body),
+        body,
         headers,
       }),
 
@@ -75,6 +75,7 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
   };
 }
 
+// Optional: export an instance for common use
 const api = Fetcher('/api');
 
 export default api;

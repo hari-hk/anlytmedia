@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import LocationIcon from '@/components/icons/location';
 
 const SocialIconsView = dynamic(() => import('./SocialIconsView'));
 
-const defaultVCardData = (name, org, phones, address, email) =>
+const defaultVCardData = (name, org, phones = ['', ''], address, email) =>
   `
 BEGIN:VCARD
 VERSION:3.0
@@ -26,7 +26,7 @@ EMAIL:${email}
 END:VCARD
 `.trim();
 
-export default function BusinessCard(props) {
+function BusinessCard(props) {
   const {
     name,
     position,
@@ -40,10 +40,16 @@ export default function BusinessCard(props) {
     textColor = 'text-white',
     cardColor = 'bg-green-600',
     buttonColor = 'bg-slate-500',
-    socialLinks = {},
+    socialLinks = {
+      instagram: '',
+      facebook: '',
+      linkedin: '',
+      twitter: '',
+    },
     enableContactButton = false,
     enableSocialLinks = false,
   } = props;
+  console.log('BusinessCard props:', props);
   const imageRef = useRef(null);
   const addButtonRef = useRef(null);
 
@@ -115,7 +121,9 @@ export default function BusinessCard(props) {
 
             <div className='w-full h-px bg-gray-300 my-4'></div>
 
-            <ul className={`space-y-3 text-sm ${textColor}`}>
+            <ul
+              className={`w-full flex flex-col items-start space-y-3 text-sm ${textColor}`}
+            >
               {email && (
                 <li className='flex items-center gap-2'>
                   <EmailIcon />
@@ -127,7 +135,7 @@ export default function BusinessCard(props) {
                   </a>
                 </li>
               )}
-              {phones && phones.length > 0 && (
+              {phones && phones.filter((phone) => phone.trim()).length > 0 && (
                 <li className='flex items-start justify-start gap-2'>
                   <PhoneIcon />
                   <ul className='list-disc-none'>
@@ -159,29 +167,35 @@ export default function BusinessCard(props) {
         </button>
       )}
 
-      {enableSocialLinks && Object.keys(socialLinks).length > 0 && (
-        <>
-          <h2 className={`text-2xl font-bold mt-6 mb-2 ${textColor}`}>
-            Social Media
-          </h2>
-          <div className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg'>
-            <div className='p-6'>
-              <div className='flex flex-row items-center gap-2 flex-wrap justify-around'>
-                {Object.entries(socialLinks).map(([key, url]) => (
-                  <div
-                    key={key}
-                    className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
-                  >
-                    <Link href={url} target='_blank'>
-                      <SocialIconsView url={url} />
-                    </Link>
-                  </div>
-                ))}
+      {enableSocialLinks &&
+        Object.entries(socialLinks).filter(([key, value]) => value.trim())
+          .length > 0 && (
+          <>
+            <h2 className={`text-2xl font-bold mt-6 mb-2 ${textColor}`}>
+              Social Media
+            </h2>
+            <div className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg'>
+              <div className='p-6'>
+                <div className='flex flex-row items-center gap-2 flex-wrap justify-around'>
+                  {Object.entries(socialLinks)
+                    .filter(([key, value]) => value.trim())
+                    .map(([key, url]) => (
+                      <div
+                        key={key}
+                        className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
+                      >
+                        <Link href={url} target='_blank'>
+                          <SocialIconsView url={url} color={textColor} />
+                        </Link>
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
     </div>
   );
 }
+
+export default memo(BusinessCard);
