@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 export async function POST(req) {
   try {
     const payload = await req.json();
-
     // Validate payload
     if (!payload || !payload.email || !payload.password) {
       return NextResponse.json(
