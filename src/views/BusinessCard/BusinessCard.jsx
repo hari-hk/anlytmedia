@@ -49,6 +49,7 @@ function BusinessCard(props) {
     enableContactButton = false,
     enableSocialLinks = false,
   } = props;
+  console.log('BusinessCard props:', props);
   const imageRef = useRef(null);
   const addButtonRef = useRef(null);
 
@@ -120,7 +121,9 @@ function BusinessCard(props) {
 
             <div className='w-full h-px bg-gray-300 my-4'></div>
 
-            <ul className={`w-full flex flex-col items-start space-y-3 text-sm ${textColor}`}>
+            <ul
+              className={`w-full flex flex-col items-start space-y-3 text-sm ${textColor}`}
+            >
               {email && (
                 <li className='flex items-center gap-2'>
                   <EmailIcon />
@@ -165,8 +168,8 @@ function BusinessCard(props) {
       )}
 
       {enableSocialLinks &&
-        Object.entries(socialLinks).filter(([key, value]) => value.trim()).length >
-          0 && (
+        Object.entries(socialLinks).filter(([key, value]) => value.trim())
+          .length > 0 && (
           <>
             <h2 className={`text-2xl font-bold mt-6 mb-2 ${textColor}`}>
               Social Media
@@ -182,7 +185,7 @@ function BusinessCard(props) {
                         className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
                       >
                         <Link href={url} target='_blank'>
-                          <SocialIconsView url={url} />
+                          <SocialIconsView url={url} color={textColor} />
                         </Link>
                       </div>
                     ))}

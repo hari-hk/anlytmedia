@@ -6,22 +6,22 @@ const InstagramIcon = dynamic(() => import('@/components/icons/instagram'));
 const LinkedInIcon = dynamic(() => import('@/components/icons/linkedin'));
 const TwitterIcon = dynamic(() => import('@/components/icons/twitter'));
 
-function SocialIconsView({ url }) {
+function SocialIconsView({ url, color = 'text-white' }) {
   const match = url.match(
-    /(?:https?:\/\/)?(?:www\.)?(instagram|facebook|fb|linkedin|twitter|youtube|tiktok|threads)\.com/i
+    /(?:https?:\/\/)?(?:www\.)?(instagram|facebook|fb|linkedin|twitter|x|youtube|tiktok|threads)\.com/i
   );
   const iconName = match ? match[1].toLowerCase() : null;
 
   switch (iconName) {
     case 'instagram':
-      return <InstagramIcon />;
+      return <InstagramIcon color={color} />;
     case 'facebook':
     case 'fb':
-      return <FacebookIcon />;
+      return <FacebookIcon color={color} />;
     case 'linkedin':
-      return <LinkedInIcon />;
+      return <LinkedInIcon color={color} />;
     case 'twitter':
-      return <TwitterIcon />;
+      return <TwitterIcon color={color} />;
     default:
       return <></>;
   }
