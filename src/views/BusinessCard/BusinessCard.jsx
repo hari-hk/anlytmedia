@@ -120,7 +120,7 @@ function BusinessCard(props) {
 
             <div className='w-full h-px bg-gray-300 my-4'></div>
 
-            <ul className={`space-y-3 text-sm ${textColor}`}>
+            <ul className={`w-full flex flex-col items-start space-y-3 text-sm ${textColor}`}>
               {email && (
                 <li className='flex items-center gap-2'>
                   <EmailIcon />
