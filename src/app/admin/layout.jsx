@@ -17,9 +17,7 @@ export default function AdminLayout({ children }) {
     if (event === 'TOKEN_REFRESHED') {
     }
     if (event === 'INITIAL_SESSION') {
-      if (session) {
-        setIsLoggedIn(true);
-      }
+      setIsLoggedIn(!!session);
     }
     // You can add additional logic here if needed
   };
