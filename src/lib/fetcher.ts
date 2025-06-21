@@ -1,17 +1,27 @@
-export function Fetcher(baseURL = '', defaultOptions = {}) {
+import { IFetcherInstance, IFetchOptions } from './fetcher.interface';
+
+
+export function Fetcher(
+  baseURL = '',
+  defaultOptions: IFetchOptions = {}
+): IFetcherInstance {
   const TIMEOUT = 10000; // 10 seconds
 
-  async function makeFetch(endpoint, options = {}) {
+  async function makeFetch(
+    endpoint: string,
+    options: IFetchOptions = {}
+  ): Promise<any> {
     const url = `${baseURL}${endpoint}`;
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), TIMEOUT);
 
-    const headers = {
+    const headers: HeadersInit = {
       'Content-Type': 'application/json',
       ...(defaultOptions.headers || {}),
       ...(options.headers || {}),
     };
-    const config = {
+
+    const config: RequestInit = {
       ...options,
       headers,
       signal: controller.signal,
@@ -29,11 +39,11 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
         : await res.text();
 
       if (!res.ok) {
-        throw new Error(data?.error || res.statusText);
+        throw new Error((data as any)?.error || res.statusText);
       }
 
       return data;
-    } catch (error) {
+    } catch (error: any) {
       clearTimeout(timeoutId);
       if (error.name === 'AbortError') {
         throw new Error(
@@ -46,36 +56,20 @@ export function Fetcher(baseURL = '', defaultOptions = {}) {
   }
 
   return {
-    get: (endpoint, headers = {}) =>
-      makeFetch(endpoint, {
-        method: 'GET',
-        headers,
-      }),
+    get: (endpoint: string, headers: HeadersInit = {}) =>
+      makeFetch(endpoint, { method: 'GET', headers }),
 
-    post: (endpoint, body = {}, headers = {}) =>
-      makeFetch(endpoint, {
-        method: 'POST',
-        body,
-        headers,
-      }),
+    post: (endpoint: string, body: any = {}, headers: HeadersInit = {}) =>
+      makeFetch(endpoint, { method: 'POST', body, headers }),
 
-    patch: (endpoint, body = {}, headers = {}) =>
-      makeFetch(endpoint, {
-        method: 'PATCH',
-        body,
-        headers,
-      }),
+    patch: (endpoint: string, body: any = {}, headers: HeadersInit = {}) =>
+      makeFetch(endpoint, { method: 'PATCH', body, headers }),
 
-    delete: (endpoint, body = {}, headers = {}) =>
-      makeFetch(endpoint, {
-        method: 'DELETE',
-        body,
-        headers,
-      }),
+    delete: (endpoint: string, body: any = {}, headers: HeadersInit = {}) =>
+      makeFetch(endpoint, { method: 'DELETE', body, headers }),
   };
 }
 
-// Optional: export an instance for common use
+// Optional: Export default instance for app-wide use
 const api = Fetcher('/api');
-
 export default api;
