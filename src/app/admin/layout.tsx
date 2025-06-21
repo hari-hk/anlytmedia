@@ -1,26 +1,39 @@
 'use client';
-import { useState } from 'react';
+
+import { useState, ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 import AppHeader from '@/components/AppHeader';
 import AuthListener from '@/components/AuthListener/AuthListener';
 import Login from '@/views/Login/Login';
+import { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
-export default function AdminLayout({ children }) {
+interface AdminLayoutProps {
+  children: ReactNode;
+}
+
+export default function AdminLayout({ children }: AdminLayoutProps) {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
 
-  const handleAuthChange = (event, session) => {
-    if (event === 'SIGNED_IN') {
-      setIsLoggedIn(true);
+  const handleAuthChange = (
+    event: AuthChangeEvent,
+    session: Session | null
+  ) => {
+    switch (event) {
+      case 'SIGNED_IN':
+        setIsLoggedIn(true);
+        break;
+      case 'SIGNED_OUT':
+        setIsLoggedIn(false);
+        break;
+      case 'INITIAL_SESSION':
+        setIsLoggedIn(!!session);
+        break;
+      case 'TOKEN_REFRESHED':
+      case 'USER_UPDATED':
+      case 'PASSWORD_RECOVERY':
+        // Optional: handle these cases
+        break;
     }
-    if (event === 'SIGNED_OUT') {
-      setIsLoggedIn(false);
-    }
-    if (event === 'TOKEN_REFRESHED') {
-    }
-    if (event === 'INITIAL_SESSION') {
-      setIsLoggedIn(!!session);
-    }
-    // You can add additional logic here if needed
   };
 
   return (

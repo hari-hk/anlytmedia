@@ -28,7 +28,6 @@ type BusinessCardFormData = {
   buttonColor?: string;
   enableContactButton?: boolean;
   enableSocialLinks?: boolean;
-  [key: string]: any;
 };
 
 type BusinessCardFormProps = {
@@ -84,8 +83,8 @@ const BusinessCardForm = ({
 
     const urlFields = ['address_link'];
     urlFields.forEach((field) => {
-      const val = formData[field];
-      if (val?.trim() && !/^https?:\/\/[\w.-]+/.test(val)) {
+      const val = formData[field as keyof BusinessCardFormData];
+      if (typeof val === 'string' && val.trim() && !/^https?:\/\/[\w.-]+/.test(val)) {
         newErrors[field] = `${field} must be a valid URL`;
       }
     });
@@ -122,14 +121,16 @@ const BusinessCardForm = ({
       </h2>
 
       {/* Text Inputs */}
-      {([
-        { label: 'Full Name', field: 'name', type: 'text' },
-        { label: 'URL Path', field: 'endpoint', type: 'text' },
-        { label: 'Position', field: 'position', type: 'text' },
-        { label: 'Logo', field: 'logo', type: 'text' },
-        { label: 'Organization', field: 'org', type: 'text' },
-        { label: 'Email', field: 'email', type: 'email' },
-      ] as const).map(({ label, field, type }) => (
+      {(
+        [
+          { label: 'Full Name', field: 'name', type: 'text' },
+          { label: 'URL Path', field: 'endpoint', type: 'text' },
+          { label: 'Position', field: 'position', type: 'text' },
+          { label: 'Logo', field: 'logo', type: 'text' },
+          { label: 'Organization', field: 'org', type: 'text' },
+          { label: 'Email', field: 'email', type: 'email' },
+        ] as const
+      ).map(({ label, field, type }) => (
         <div key={field}>
           <label className='block mb-1'>{label}</label>
           <input
@@ -199,23 +200,23 @@ const BusinessCardForm = ({
       </div>
 
       {/* Theme Fields */}
-      {(['bgColor', 'bgLogo', 'textColor', 'cardColor', 'buttonColor'] as const).map(
-        (field) => (
-          <div key={field}>
-            <label className='block mb-1 capitalize'>
-              {field.replace(/([A-Z])/g, ' $1')}
-            </label>
-            <input
-              className={inputClass}
-              type='text'
-              value={formData[field] || ''}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                updateField(field, e.target.value)
-              }
-            />
-          </div>
-        )
-      )}
+      {(
+        ['bgColor', 'bgLogo', 'textColor', 'cardColor', 'buttonColor'] as const
+      ).map((field) => (
+        <div key={field}>
+          <label className='block mb-1 capitalize'>
+            {field.replace(/([A-Z])/g, ' $1')}
+          </label>
+          <input
+            className={inputClass}
+            type='text'
+            value={formData[field] || ''}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              updateField(field, e.target.value)
+            }
+          />
+        </div>
+      ))}
 
       {/* Toggles */}
       <div className='flex items-center space-x-4'>

@@ -5,9 +5,9 @@ import api from '@/lib/fetcher';
 import { supabase } from '@/lib/supabaseClient';
 
 function LoginPage() {
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
     const email = formData.get('email');
     const password = formData.get('password');
 

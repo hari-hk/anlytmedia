@@ -2,10 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import api from '@/lib/fetcher';
-import BusinessCard from '@/views/BusinessCard/BusinessCard';
+import BusinessCard, {
+  BusinessCardProps,
+} from '@/views/BusinessCard/BusinessCard';
+
+interface DynamicBusinessCard extends BusinessCardProps {
+  id: string;
+}
 
 export default function DynamicBusinessCard({ id }: { id: string }) {
-  const [data, setData] = useState<null | any>(null);
+  const [data, setData] = useState<null | DynamicBusinessCard>(null);
   const [loading, setLoading] = useState(true);
 
   const getBusinessCard = async () => {

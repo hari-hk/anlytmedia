@@ -6,13 +6,13 @@ export const metadata = {
 };
 
 interface DynamicCardProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function DynamicCard({ params }: DynamicCardProps) {
-  const { id } = params;
+  const { id } = await params;
 
   return <DynamicBusinessCard id={id} />;
 }

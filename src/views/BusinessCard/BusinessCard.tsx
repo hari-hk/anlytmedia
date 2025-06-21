@@ -58,7 +58,6 @@ export interface BusinessCardProps {
     facebook?: string;
     linkedin?: string;
     twitter?: string;
-    [key: string]: string | undefined;
   };
   enableContactButton?: boolean;
   enableSocialLinks?: boolean;
@@ -87,8 +86,6 @@ function BusinessCard(props: BusinessCardProps) {
     enableContactButton = false,
     enableSocialLinks = false,
   } = props;
-
-  console.log('BusinessCard props:', props);
 
   // Define refs with proper types
   const imageRef = useRef<HTMLDivElement>(null);
