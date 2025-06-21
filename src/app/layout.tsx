@@ -31,13 +31,9 @@ export default function RootLayout({ children }: IRootLayoutProps) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
-      {typeof window !== 'undefined' && (
-        <>
-          <Analytics />
-          <SpeedInsights />
-        </>
-      )}
     </html>
   );
 }
