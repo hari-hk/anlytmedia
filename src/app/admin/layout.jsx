@@ -25,7 +25,7 @@ export default function AdminLayout({ children }) {
 
   return (
     <div className='flex flex-col items-center justify-start min-h-screen bg-gray-900 p-2'>
-      <div className='w-full max-w-4xl'>
+      <div className='w-full max-w-5xl'>
         <AuthListener onAuthChange={handleAuthChange} />
         <Toaster position='bottom-center' reverseOrder={true} />
         {typeof isLoggedIn !== 'object' && (
