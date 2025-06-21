@@ -34,7 +34,7 @@ function BusinessCard(props) {
     phones,
     address,
     org,
-    profileImage = '/app-bar-logo.svg',
+    logo = '/app-bar-logo.svg',
     bgColor = 'from-slate-600 to-slate-800',
     bgLogo,
     textColor = 'text-white',
@@ -103,15 +103,15 @@ function BusinessCard(props) {
             <div
               className={`absolute w-24 h-24 ${
                 bgLogo ?? cardColor
-              } rounded-full mb-4 -top-16 shadow-xl`}
+              } rounded-full mb-4 -top-16 shadow-xl flex items-center justify-center`}
               ref={imageRef}
             >
               <Image
-                src={profileImage ?? '/app-bar-logo.svg'}
+                src={logo ?? '/app-bar-logo.svg'}
                 alt='avatar'
-                width={96}
-                height={96}
-                className='rounded-full'
+                width={80}
+                height={80}
+                className='rounded-full p-1'
               />
             </div>
             <h2 className={`text-2xl font-semibold mt-[3rem] ${textColor}`}>
@@ -126,7 +126,7 @@ function BusinessCard(props) {
             >
               {email && (
                 <li className='flex items-center gap-2'>
-                  <EmailIcon />
+                  <EmailIcon color={textColor} />
                   <a
                     className='flex items-center gap-2'
                     href={`mailto:${email}`}
@@ -137,7 +137,7 @@ function BusinessCard(props) {
               )}
               {phones && phones.filter((phone) => phone.trim()).length > 0 && (
                 <li className='flex items-start justify-start gap-2'>
-                  <PhoneIcon />
+                  <PhoneIcon color={textColor} />
                   <ul className='list-disc-none'>
                     {phones.map((phone, index) => (
                       <li key={index}>
@@ -149,7 +149,7 @@ function BusinessCard(props) {
               )}
               {address && (
                 <li className='flex items-start justify-start gap-2'>
-                  <LocationIcon />
+                  <LocationIcon color={textColor} />
                   <span className='text-start'>{address}</span>
                 </li>
               )}
