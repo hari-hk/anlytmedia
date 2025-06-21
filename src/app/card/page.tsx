@@ -1,13 +1,13 @@
-import { IBusinessCardData } from '@/interfaces/bussiness-card.interface';
-import BusinessCard from '@/views/BusinessCard/BusinessCard';
+import BusinessCard, {
+  BusinessCardProps,
+} from '@/views/BusinessCard/BusinessCard';
 
 export const metadata = {
   title: 'Ananda Sayanan | Business Card',
   description: 'Creative Director at Anlyt Media',
 };
 
-
-const defaultData: IBusinessCardData = {
+const defaultData: BusinessCardProps = {
   name: 'Ananda Sayanan',
   position: 'Creative Director at Anlyt Media',
   org: 'Anlyt Media',
@@ -22,6 +22,7 @@ const defaultData: IBusinessCardData = {
   buttonColor: 'bg-slate-500',
   enableContactButton: true,
   enableSocialLinks: true,
+  endpoint: 'ananda-sayanan',
   socialLinks: {
     instagram: 'https://www.instagram.com/anlytmedia',
     facebook: 'https://www.facebook.com/anlytmedia',
