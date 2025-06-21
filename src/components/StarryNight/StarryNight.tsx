@@ -12,8 +12,8 @@ const StarryNight = ({
   containerHeight = 600, // in pixels
   customStyle = {},
 }) => {
-  const starsRef = useRef([]);
-  const containerRef = useRef(null);
+  const starsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // State to store container's actual dimensions
   const [containerDimensions, setContainerDimensions] = useState({
@@ -22,7 +22,7 @@ const StarryNight = ({
   });
 
   // Function to generate a random value between min and max
-  const getRandom = (min, max) => {
+  const getRandom = (min: number, max: number) => {
     return Math.random() * (max - min) + min;
   };
 
@@ -75,7 +75,7 @@ const StarryNight = ({
         gsap.to(star, {
           opacity: 1,
           scale: 1.5,
-        //   boxShadow: `0px 0px 10px 5px ${starColor}`,
+          //   boxShadow: `0px 0px 10px 5px ${starColor}`,
           duration: speed, // Controls the sparkle effect
           repeat: -1, // Loop infinitely
           yoyo: true, // Make the animation go back and forth
@@ -105,7 +105,7 @@ const StarryNight = ({
     stars.push(
       <div
         key={i}
-        ref={(el) => starsRef.current[i] = el}  // Assign each ref using index
+        ref={(el) => { starsRef.current[i] = el; }} // Assign each ref using index
         className='star'
         style={{
           position: 'absolute',
@@ -127,7 +127,7 @@ const StarryNight = ({
         height: `${containerDimensions.height}px`,
         overflow: 'hidden',
         backgroundColor: 'transparent',
-        ...customStyle
+        ...customStyle,
       }}
     >
       {stars}

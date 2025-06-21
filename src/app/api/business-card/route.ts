@@ -1,13 +1,13 @@
 import { supabase } from '@/lib/supabaseClient';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 // GET: Fetch all business cards
-export async function GET(req) {
+export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
     const endpoint = searchParams.get('endpoint');
-    let query = supabase.from('businesscard').select('*');
+    let query: any = supabase.from('businesscard').select('*');
     if (id) {
       query = supabase.from('businesscard').select().eq('id', id).single();
     }
@@ -32,7 +32,7 @@ export async function GET(req) {
 }
 
 // POST: Create a new business card
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   const body = await req.json();
 
   const { data, error } = await supabase
@@ -46,7 +46,7 @@ export async function POST(req) {
 }
 
 // DELETE: Delete business card by id
-export async function DELETE(req) {
+export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get('id');
 
@@ -65,7 +65,7 @@ export async function DELETE(req) {
 }
 
 // PATCH: Update business card by id
-export async function PATCH(req) {
+export async function PATCH(req: NextRequest) {
   const body = await req.json();
   const { id, ...updates } = body;
 

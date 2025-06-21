@@ -11,8 +11,6 @@ export default function ContactPage() {
             width='640'
             height='956'
             frameBorder='0'
-            marginHeight='0'
-            marginWidth='0'
           >
             Loading…
           </iframe>

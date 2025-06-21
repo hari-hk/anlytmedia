@@ -104,8 +104,6 @@ export default function OurExperience() {
               title={card.title}
               allowFullScreen
               frameBorder='0'
-              mozallowfullscreen='true'
-              webkitallowfullscreen='true'
               allow='autoplay; fullscreen; xr-spatial-tracking'
               xr-spatial-tracking='true'
               execution-while-out-of-viewport='true'

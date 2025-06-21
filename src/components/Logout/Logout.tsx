@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
 export default function Logout() {
-  const [loading, setLoading] = useState(false);
-  const handlelogout = async () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const handlelogout = async (): Promise<void> => {
     setLoading(true);
     await supabase.auth.signOut();
     setLoading(false);

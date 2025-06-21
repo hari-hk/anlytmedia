@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 
+
 // Dynamically import the model-viewer library (to avoid SSR issues)
-const ModelViewerComponent = (props) => {
+const ModelViewerComponent = (props: any) => {
   useEffect(() => {
     import('@google/model-viewer');
   }, []);

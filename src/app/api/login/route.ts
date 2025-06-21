@@ -1,7 +1,7 @@
 import { supabase } from '@/lib/supabaseClient';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
     // Validate payload
@@ -40,9 +40,9 @@ export async function POST(req) {
     }
 
     return NextResponse.json({ data });
-  } catch (err) {
+  } catch (err: any) {
     return NextResponse.json(
-      { error: err.message || 'Internal server error.' },
+      { error: err?.message ?? 'Internal server error.' },
       { status: 500 }
     );
   }

@@ -1,48 +1,51 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Image from 'next/image';
 import StarryNight from '../StarryNight/StarryNight';
 
+interface IntroProps {
+  disableDescription?: boolean;
+  hideContactButton?: boolean;
+}
+
 export default function Intro({
   disableDescription = false,
   hideContactButton = false,
-}) {
-  const boxRef = useRef(null);
-  const textRef = useRef(null);
+}: IntroProps) {
+  const boxRef = useRef<HTMLHeadingElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
   const text =
     'Elevating brands through innovative and engaging digital solutions';
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (boxRef.current) {
       gsap.fromTo(
         boxRef.current,
-        { y: -200, opacity: 0 }, // start above view
-        { y: 0, opacity: 1, duration: 1, ease: 'bounce.out' } // fall down to natural position
+        { y: -200, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: 'bounce.out' }
       );
     }
   }, []);
 
-  useEffect(() => {
-    // Split the text into individual characters and wrap each character in a <span>
+  useLayoutEffect(() => {
     const chars = text.split('');
     if (textRef.current) {
-      textRef.current.innerHTML = ''; // Clear any existing content
+      textRef.current.innerHTML = '';
       chars.forEach((char) => {
         const span = document.createElement('span');
         span.textContent = char;
-        textRef.current.appendChild(span);
+        textRef.current!.appendChild(span);
       });
 
-      // GSAP typing animation (staggered)
       gsap.fromTo(
-        textRef.current.children,
+        Array.from(textRef.current.children),
         { opacity: 0 },
         {
           opacity: 1,
           duration: 0.05,
-          stagger: 0.1, // Adjust for slower or faster typing
+          stagger: 0.1,
           ease: 'power1.inOut',
         }
       );

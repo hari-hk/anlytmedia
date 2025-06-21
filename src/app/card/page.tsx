@@ -1,16 +1,18 @@
+import { IBusinessCardData } from '@/interfaces/bussiness-card.interface';
 import BusinessCard from '@/views/BusinessCard/BusinessCard';
 
 export const metadata = {
-  title: 'Ananda Sayanan | Card',
+  title: 'Ananda Sayanan | Business Card',
   description: 'Creative Director at Anlyt Media',
 };
 
-const defaultData = {
+
+const defaultData: IBusinessCardData = {
   name: 'Ananda Sayanan',
   position: 'Creative Director at Anlyt Media',
   org: 'Anlyt Media',
   email: 'hello@anlytmedia.in',
-  profileImage: '/app-bar-logo.svg',
+  logo: '/app-bar-logo.svg',
   phones: ['+917092828370', '+918428524861'],
   address: '18/16/3, Elavuvilai Jn, Marthandam, TN 629191, India',
   bgColor: 'from-slate-600 to-slate-800 card-bg',

@@ -1,11 +1,11 @@
 'use client';
 
+import { memo } from 'react';
 import api from '@/lib/fetcher';
 import { supabase } from '@/lib/supabaseClient';
-import { memo } from 'react';
 
 function LoginPage() {
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const email = formData.get('email');
@@ -17,7 +17,7 @@ function LoginPage() {
         password,
       });
       if (error) {
-        throw new Error(response.error.message || 'Login failed');
+        throw new Error(error.message || 'Login failed');
       }
 
       if (data?.session) {

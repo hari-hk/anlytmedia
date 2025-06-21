@@ -5,8 +5,14 @@ export const metadata = {
   description: 'Powered at Anlyt Media',
 };
 
-export default async function DynamicCard({ params }) {
-  const { id } = await params;
+interface DynamicCardProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function DynamicCard({ params }: DynamicCardProps) {
+  const { id } = params;
 
   return <DynamicBusinessCard id={id} />;
 }
