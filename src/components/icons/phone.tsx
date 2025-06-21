@@ -1,4 +1,8 @@
-export default function PhoneIcon({ color = 'text-slate-500' }) {
+export default function PhoneIcon({
+  color = 'text-slate-500',
+}: {
+  color?: string;
+}) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

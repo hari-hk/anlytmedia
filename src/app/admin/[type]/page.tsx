@@ -6,6 +6,29 @@ import toast from 'react-hot-toast';
 import api from '@/lib/fetcher';
 import BusinessCardForm from '@/views/Admin/BusinessCardForm';
 
+const baseData = {
+  name: '',
+  position: '',
+  email: '',
+  phones: ['', ''],
+  address: '',
+  org: '',
+  logo: '',
+  bgColor: 'from-slate-600 to-slate-800',
+  bgLogo: 'bg-blue-200',
+  textColor: 'text-white',
+  cardColor: 'bg-blue-600',
+  buttonColor: 'bg-slate-500',
+  socialLinks: {
+    instagram: '',
+    facebook: '',
+    linkedin: '',
+    twitter: '',
+  },
+  enableContactButton: false,
+  enableSocialLinks: false,
+};
+
 function AddBusinessCard() {
   const params = useParams();
   const router = useRouter();
@@ -13,7 +36,7 @@ function AddBusinessCard() {
 
   const [initialData, setInitialData] = useState(null);
 
-  const handleSubmit = async (formData) => {
+  const handleSubmit = async (formData: unknown) => {
     api[isEditMode ? 'patch' : 'post']('/business-card', formData)
       .then(() => {
         toast.success(
@@ -50,30 +73,7 @@ function AddBusinessCard() {
     <BusinessCardForm
       onSubmit={handleSubmit}
       editMode={isEditMode}
-      initialData={
-        initialData ?? {
-          name: '',
-          position: '',
-          email: '',
-          phones: ['', ''],
-          address: '',
-          org: '',
-          logo: '',
-          bgColor: 'from-slate-600 to-slate-800',
-          bgLogo: 'bg-blue-200',
-          textColor: 'text-white',
-          cardColor: 'bg-blue-600',
-          buttonColor: 'bg-slate-500',
-          socialLinks: {
-            instagram: '',
-            facebook: '',
-            linkedin: '',
-            twitter: '',
-          },
-          enableContactButton: false,
-          enableSocialLinks: false,
-        }
-      }
+      initialData={initialData ?? baseData}
     />
   );
 }

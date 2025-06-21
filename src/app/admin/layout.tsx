@@ -6,7 +6,7 @@ import AuthListener from '@/components/AuthListener/AuthListener';
 import Login from '@/views/Login/Login';
 
 export default function AdminLayout({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
 
   const handleAuthChange = (event, session) => {
     if (event === 'SIGNED_IN') {

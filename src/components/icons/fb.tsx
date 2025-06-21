@@ -1,4 +1,8 @@
-export default function FacebookIcon({ color = 'text-white' }) {
+export default function FacebookIcon({
+  color = 'text-white',
+}: {
+  color?: string;
+}) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
