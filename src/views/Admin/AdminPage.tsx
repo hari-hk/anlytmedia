@@ -6,14 +6,39 @@ import { useRouter } from 'next/navigation';
 import api from '@/lib/fetcher';
 import toast from 'react-hot-toast';
 
+// Define the type for a business card
+interface BusinessCard {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  logo?: string;
+  endpoint: string;
+}
+
+// Props for BusinessCardItem
+interface BusinessCardItemProps extends BusinessCard {
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+  onView: (endpoint: string) => void;
+}
+
+// Props for BusinessCardList
+interface BusinessCardListProps {
+  list: BusinessCard[];
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+  onView: (endpoint: string) => void;
+}
+
 function AdminPage() {
   const router = useRouter();
 
-  const [businessCards, setBusinessCards] = useState([]);
+  const [businessCards, setBusinessCards] = useState<BusinessCard[]>([]);
 
   const fetchBusinessCards = async () => {
     try {
-      const response = await api.get('/business-card');
+      const response: BusinessCard[] = await api.get('/business-card');
       if (response.length > 0) {
         setBusinessCards(response);
       }
@@ -21,19 +46,24 @@ function AdminPage() {
       console.error('Error fetching business cards:', error);
     }
   };
-  const handleDelete = async (id) => {
+
+  const handleDelete = async (id: string) => {
     try {
       const response = await api.delete(`/business-card?id=${id}`);
       if (response) {
         toast.success('Business card deleted successfully');
         setBusinessCards((prev) => prev.filter((card) => card.id !== id));
       }
-    } catch (error) {
-      toast.error(error.message || 'Failed to delete business card');
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'message' in error) {
+        toast.error((error as { message?: string }).message || 'Failed to delete business card');
+      } else {
+        toast.error('Failed to delete business card');
+      }
     }
   };
 
-  const handleEdit = async (id) => {
+  const handleEdit = (id: string) => {
     router.push(`/admin/${id}`);
   };
 
@@ -48,14 +78,14 @@ function AdminPage() {
           list={businessCards}
           onDelete={handleDelete}
           onEdit={handleEdit}
-          onView={(endpoint) => window.open(`/card/${endpoint}`, '_blank')}
+          onView={(endpoint: string) => window.open(`/card/${endpoint}`, '_blank')}
         />
       </div>
     </div>
   );
 }
 
-const BusinessCardItem = ({
+const BusinessCardItem: React.FC<BusinessCardItemProps> = ({
   name,
   email,
   phone,
@@ -113,12 +143,12 @@ const BusinessCardItem = ({
   </div>
 );
 
-const BusinessCardList = ({ list = [], onDelete, onEdit, onView }) => {
+const BusinessCardList: React.FC<BusinessCardListProps> = ({ list = [], onDelete, onEdit, onView }) => {
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-      {list.map((contact, index) => (
+      {list.map((contact) => (
         <BusinessCardItem
-          key={index}
+          key={contact.id}
           {...contact}
           onDelete={onDelete}
           onEdit={onEdit}
@@ -128,4 +158,5 @@ const BusinessCardList = ({ list = [], onDelete, onEdit, onView }) => {
     </div>
   );
 };
+
 export default AdminPage;

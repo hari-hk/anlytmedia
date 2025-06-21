@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import api from '@/lib/fetcher';
 import BusinessCard from '@/views/BusinessCard/BusinessCard';
 
-export default function DynamicBusinessCard({ id }) {
-  const [data, setData] = useState(null);
+export default function DynamicBusinessCard({ id }: { id: string }) {
+  const [data, setData] = useState<null | any>(null);
   const [loading, setLoading] = useState(true);
 
   const getBusinessCard = async () => {

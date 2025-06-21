@@ -6,7 +6,13 @@ const InstagramIcon = dynamic(() => import('@/components/icons/instagram'));
 const LinkedInIcon = dynamic(() => import('@/components/icons/linkedin'));
 const TwitterIcon = dynamic(() => import('@/components/icons/twitter'));
 
-function SocialIconsView({ url, color = 'text-white' }) {
+function SocialIconsView({
+  url,
+  color = 'text-white',
+}: {
+  url: string;
+  color?: string;
+}) {
   const match = url.match(
     /(?:https?:\/\/)?(?:www\.)?(instagram|facebook|fb|linkedin|twitter|x|youtube|tiktok|threads)\.com/i
   );

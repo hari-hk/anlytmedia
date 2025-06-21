@@ -2,7 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Logout from '../Logout/Logout';
 
-export default function AppHeader({ isAuthenticated }) {
+export default function AppHeader({
+  isAuthenticated,
+}: {
+  isAuthenticated: boolean;
+}) {
   return (
     <header className='mb-4 w-full flex flex-row items-center justify-between bg-gray-800 gap-2 p-4 rounded-lg shadow-lg'>
       <Link href='/admin'>

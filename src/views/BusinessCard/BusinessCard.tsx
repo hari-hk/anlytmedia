@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,9 +10,22 @@ import EmailIcon from '@/components/icons/email';
 import PhoneIcon from '@/components/icons/phone';
 import LocationIcon from '@/components/icons/location';
 
-const SocialIconsView = dynamic(() => import('./SocialIconsView'));
+// Dynamically import SocialIconsView with an expected prop signature.
+const SocialIconsView = dynamic(
+  () => import('./SocialIconsView')
+) as React.ComponentType<{
+  url: string;
+  color: string;
+}>;
 
-const defaultVCardData = (name, org, phones = ['', ''], address, email) =>
+// Helper: Generate a vCard string
+const defaultVCardData = (
+  name: string,
+  org: string,
+  phones: string[] = ['', ''],
+  address: string,
+  email: string
+): string =>
   `
 BEGIN:VCARD
 VERSION:3.0
@@ -26,7 +39,32 @@ EMAIL:${email}
 END:VCARD
 `.trim();
 
-function BusinessCard(props) {
+// Define the prop types for the BusinessCard component
+export interface BusinessCardProps {
+  name: string;
+  position: string;
+  email: string;
+  phones: string[];
+  address: string;
+  org: string;
+  logo?: string;
+  bgColor?: string;
+  bgLogo?: string;
+  textColor?: string;
+  cardColor?: string;
+  buttonColor?: string;
+  socialLinks?: {
+    instagram?: string;
+    facebook?: string;
+    linkedin?: string;
+    twitter?: string;
+    [key: string]: string | undefined;
+  };
+  enableContactButton?: boolean;
+  enableSocialLinks?: boolean;
+}
+
+function BusinessCard(props: BusinessCardProps) {
   const {
     name,
     position,
@@ -49,33 +87,40 @@ function BusinessCard(props) {
     enableContactButton = false,
     enableSocialLinks = false,
   } = props;
+
   console.log('BusinessCard props:', props);
-  const imageRef = useRef(null);
-  const addButtonRef = useRef(null);
+
+  // Define refs with proper types
+  const imageRef = useRef<HTMLDivElement>(null);
+  const addButtonRef = useRef<HTMLButtonElement>(null);
 
   const vCardData = defaultVCardData(name, org, phones, address, email);
 
   useEffect(() => {
-    gsap.fromTo(
-      imageRef.current,
-      { scale: 0, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-      }
-    );
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+        }
+      );
+    }
   }, []);
 
   const handleAddToContact = () => {
-    gsap.to(addButtonRef.current, {
-      scale: 0.9,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1,
-      ease: 'power1.inOut',
-    });
+    if (addButtonRef.current) {
+      gsap.to(addButtonRef.current, {
+        scale: 0.9,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power1.inOut',
+      });
+    }
 
     try {
       const blob = new Blob([vCardData], { type: 'text/vcard' });
@@ -118,9 +163,7 @@ function BusinessCard(props) {
               {name}
             </h2>
             <p className={textColor}>{position}</p>
-
             <div className='w-full h-px bg-gray-300 my-4'></div>
-
             <ul
               className={`w-full flex flex-col items-start space-y-3 text-sm ${textColor}`}
             >
@@ -166,9 +209,8 @@ function BusinessCard(props) {
           Add to contact
         </button>
       )}
-
       {enableSocialLinks &&
-        Object.entries(socialLinks).filter(([key, value]) => value.trim())
+        Object.entries(socialLinks).filter(([_, value]) => value?.trim())
           .length > 0 && (
           <>
             <h2 className={`text-2xl font-bold mt-6 mb-2 ${textColor}`}>
@@ -178,14 +220,14 @@ function BusinessCard(props) {
               <div className='p-6'>
                 <div className='flex flex-row items-center gap-2 flex-wrap justify-around'>
                   {Object.entries(socialLinks)
-                    .filter(([key, value]) => value.trim())
+                    .filter(([_, value]) => value?.trim())
                     .map(([key, url]) => (
                       <div
                         key={key}
                         className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
                       >
-                        <Link href={url} target='_blank'>
-                          <SocialIconsView url={url} color={textColor} />
+                        <Link href={url!} target='_blank'>
+                          <SocialIconsView url={url!} color={textColor} />
                         </Link>
                       </div>
                     ))}
