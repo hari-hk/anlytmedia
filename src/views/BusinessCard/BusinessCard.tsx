@@ -44,6 +44,7 @@ export interface BusinessCardProps {
   name: string;
   position: string;
   email: string;
+  endpoint: string;
   phones: string[];
   address: string;
   org: string;
