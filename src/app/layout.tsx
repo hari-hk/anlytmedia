@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -19,7 +20,11 @@ export const metadata = {
     'Anlyt Media specializes in 3D modeling, package designing, and digital marketing. We bring ideas to life with stunning visuals, standout packaging, and impactful digital strategies—helping your brand shine and connect with your audience.',
 };
 
-export default function RootLayout({ children }) {
+interface IRootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: IRootLayoutProps) {
   return (
     <html lang='en'>
       <body
