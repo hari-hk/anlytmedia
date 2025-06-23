@@ -54,6 +54,7 @@ export interface BusinessCardProps {
   textColor?: string;
   cardColor?: string;
   buttonColor?: string;
+  address_link?: string;
   socialLinks?: {
     instagram?: string;
     facebook?: string;
@@ -71,6 +72,7 @@ function BusinessCard(props: BusinessCardProps) {
     email,
     phones,
     address,
+    address_link,
     org,
     logo = '/app-bar-logo.svg',
     bgColor = 'from-slate-600 to-slate-800',
@@ -189,9 +191,12 @@ function BusinessCard(props: BusinessCardProps) {
                 </li>
               )}
               {address && (
-                <li className='flex items-start justify-start gap-2'>
+                <li className='flex items-center justify-start gap-2'>
                   <LocationIcon color={textColor} />
-                  <span className='text-start'>{address}</span>
+                  {!address_link && (
+                    <span className='text-start'>{address}</span>
+                  )}
+                  {address_link && <a href={address_link} target='_blank' >{address}</a>}
                 </li>
               )}
             </ul>
