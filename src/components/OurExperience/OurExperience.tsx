@@ -12,6 +12,7 @@ const particleOptions: ISourceOptions = {
   particles: {
     number: { value: 100 },
     shape: { type: 'circle' },
+    size: { value: 1 }, // Reduced particle size
     move: {
       enable: true,
       direction: "top",
