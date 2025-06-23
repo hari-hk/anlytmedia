@@ -10,7 +10,7 @@ const particleOptions: ISourceOptions = {
   fullScreen: { enable: false },
   background: { color: { value: 'transparent' } },
   particles: {
-    number: { value: 200, density: { enable: true, width: 800, height: 800 } },
+    number: { value: 100 },
     shape: { type: 'circle' },
     move: {
       enable: true,
@@ -66,7 +66,7 @@ function MagicSide({
         <Particles
           id={particlesId}
           options={particleOptions}
-          className='absolute top-0 w-full'
+          className='absolute top-[4rem] w-full'
         />
       )}
     </div>
