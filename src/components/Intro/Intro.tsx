@@ -1,9 +1,10 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Image from 'next/image';
-import StarryNight from '../StarryNight/StarryNight';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadStarsPreset } from '@tsparticles/preset-stars';
 
 interface IntroProps {
   disableDescription?: boolean;
@@ -14,10 +15,21 @@ export default function Intro({
   disableDescription = false,
   hideContactButton = false,
 }: IntroProps) {
+  const [isParticlesEngineInitialized, setIsParticlesEngineInitialized] =
+    useState(false);
   const boxRef = useRef<HTMLHeadingElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const text =
     'Elevating brands through innovative and engaging digital solutions';
+
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadStarsPreset(engine);
+    }).then(() => {
+      setIsParticlesEngineInitialized(true);
+    });
+  }, []);
 
   useLayoutEffect(() => {
     if (boxRef.current) {
@@ -78,15 +90,21 @@ export default function Intro({
 
       {!disableDescription && (
         <main className='container flex flex-col items-center max-w-xl justify-center'>
-          <StarryNight
-            customStyle={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              height: '100%',
-            }}
-          />
+          {isParticlesEngineInitialized && (
+            <div className='absolute inset-0 z-[-999]'>
+              <Particles
+                id='tsparticles'
+                options={{
+                  particles: {
+                    shape: {
+                      type: 'circle',
+                    },
+                  },
+                  preset: 'stars',
+                }}
+              />
+            </div>
+          )}
           <h1
             className='text-5xl text-white font-bold  text-center leading-tight'
             ref={boxRef}

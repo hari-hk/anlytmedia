@@ -1,9 +1,13 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import StarryNight from '../StarryNight/StarryNight';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadStarsPreset } from '@tsparticles/preset-stars';
 
 export default function OurExperience() {
+  const [isParticlesEngineInitialized, setIsParticlesEngineInitialized] =
+    useState(false);
   const cardData = [
     {
       title: 'Panasonic RP-HF100M-K On Ear Headphone',
@@ -14,6 +18,15 @@ export default function OurExperience() {
       src: 'https://sketchfab.com/models/14eb55d7069748889a27e9b06709dae4/embed',
     },
   ];
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadStarsPreset(engine);
+    }).then(() => {
+      setIsParticlesEngineInitialized(true);
+    });
+  }, []);
+
   return (
     <section className='container relative w-full '>
       <div
@@ -40,15 +53,7 @@ export default function OurExperience() {
               'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
           }}
         ></div>
-          <StarryNight
-          customStyle={{
-            position: 'absolute',
-            top: '0',
-            left:'0',
-            width: '100%',
-            height: '100%',
-          }}
-        />
+
         <Image
           src='/magic-l.svg'
           alt='anlyt media logo'
@@ -66,15 +71,7 @@ export default function OurExperience() {
               'linear-gradient(90deg, transparent 0, var(--background) 100%)',
           }}
         ></div>
-        <StarryNight
-          customStyle={{
-            position: 'absolute',
-            top: '0',
-            right:'0',
-            width: '100%',
-            height: '100%',
-          }}
-        />
+
         <Image
           src='/magic-r.svg'
           alt='anlyt media logo'
@@ -91,6 +88,53 @@ export default function OurExperience() {
           3D Models and AR Experiences for eCommerce
         </p>
       </section>
+
+      {isParticlesEngineInitialized && (
+        <Particles
+          id='ts-particles-fly'
+          options={{
+            fullScreen: {
+              enable: false,
+            },
+            background: {
+              color: {
+                value: 'transparent',
+              },
+            },
+            particles: {
+              number: {
+                value: 200,
+                density: {
+                  enable: true,
+                  width: 800,
+                  height: 800,
+                },
+              },
+              shape: {
+                type: 'circle',
+              },
+              move: {
+                enable: true,
+                direction: 'top',
+                speed: { min: 1.5, max: 4.2 },
+                outModes: {
+                  top: 'out',
+                  default: 'none',
+                },
+                random: true,
+                straight: false,
+              },
+            },
+            emitters: {
+              direction: 'top',
+            },
+
+            preset: 'stars',
+          }}
+          className='absolute top-0 h-[22rem] w-full'
+        />
+      )}
+
       <div
         className='container flex flex-col md:flex-row my-[3rem] md:my-[9rem] p-2 gap-4'
         style={{ zIndex: 90 }}
