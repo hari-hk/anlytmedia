@@ -15,6 +15,7 @@ const defaultData: BusinessCardProps = {
   logo: '/app-bar-logo.svg',
   phones: ['+917092828370', '+918428524861'],
   address: '18/16/3, Elavuvilai Jn, Marthandam, TN 629191, India',
+  address_link: 'https://maps.app.goo.gl/ZiwqTp3NembJRAL29',
   bgColor: 'from-slate-600 to-slate-800 card-bg',
   bgLogo: 'bg-slate-500',
   textColor: 'text-white',
