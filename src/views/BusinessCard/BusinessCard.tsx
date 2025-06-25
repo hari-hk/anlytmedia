@@ -226,7 +226,7 @@ function BusinessCard(props: BusinessCardProps) {
                       <span className='text-start'>{address}</span>
                     )}
                     {address_link && (
-                      <a href={address_link} target='_blank'>
+                      <a href={address_link} className='text-start' target='_blank'>
                         {address}
                       </a>
                     )}
@@ -249,10 +249,7 @@ function BusinessCard(props: BusinessCardProps) {
           Object.entries(socialLinks).filter(([_, value]) => value?.trim())
             .length > 0 && (
             <>
-              <h2 className={`text-2xl font-bold mt-6 mb-2 ${textColor}`}>
-                Social Media
-              </h2>
-              <div className='w-[350px] shadow-xl border border-gray-200 bg-slate rounded-lg'>
+              <div className='w-[350px] mt-6 shadow-xl border border-gray-200 bg-slate rounded-lg'>
                 <div className='p-6'>
                   <div className='flex flex-row items-center gap-2 flex-wrap justify-around'>
                     {Object.entries(socialLinks)
