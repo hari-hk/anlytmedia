@@ -144,7 +144,7 @@ function BusinessCard(props: BusinessCardProps) {
       const rotateX = Math.min(Math.max(-10, y - 45), 10);
       const rotateY = Math.min(Math.max(-10, x), 10);
 
-      if (cardRef.current &&  props?.endpoint === 'sayanan') {
+      if (cardRef.current && props?.endpoint === 'sayanan') {
         // GSAP for smooth 3D rotation
         gsap.to(cardRef.current, {
           rotateX,
@@ -226,7 +226,11 @@ function BusinessCard(props: BusinessCardProps) {
                       <span className='text-start'>{address}</span>
                     )}
                     {address_link && (
-                      <a href={address_link} className='text-start' target='_blank'>
+                      <a
+                        href={address_link}
+                        className='text-start'
+                        target='_blank'
+                      >
                         {address}
                       </a>
                     )}
@@ -250,26 +254,26 @@ function BusinessCard(props: BusinessCardProps) {
             .length > 0 && (
             <>
               <div className='w-[350px] mt-6 shadow-xl border border-gray-200 bg-slate rounded-lg'>
-                <div className='p-6'>
-                  <div className='flex flex-row items-center gap-2 flex-wrap justify-around'>
-                    {Object.entries(socialLinks)
-                      .filter(([_, value]) => value?.trim())
-                      .map(([key, url]) => (
-                        <div
-                          key={key}
-                          className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
-                        >
-                          <Link href={url!} target='_blank'>
-                            <SocialIconsView url={url!} color={textColor} />
-                          </Link>
-                        </div>
-                      ))}
-                  </div>
+                <div className='flex flex-row items-center gap-2 flex-wrap justify-around p-3'>
+                  {Object.entries(socialLinks)
+                    .filter(([_, value]) => value?.trim())
+                    .map(([key, url]) => (
+                      <div
+                        key={key}
+                        className='size-10 border drop-shadow-md shadow-slate-100 rounded-full flex items-center justify-center'
+                      >
+                        <Link href={url!} target='_blank'>
+                          <SocialIconsView url={url!} color={textColor} />
+                        </Link>
+                      </div>
+                    ))}
                 </div>
               </div>
             </>
           )}
       </div>
+
+      <a href='/' className='mt-5 text-sm'>Powered by Anlytmedia</a>
     </div>
   );
 }

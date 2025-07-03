@@ -1,0 +1,118 @@
+[
+    {
+        "id": 5,
+        "created_at": "2025-06-17T13:14:47.242579+00:00",
+        "name": "Ananda Sayanan s",
+        "position": "Anlyt Media",
+        "org": "Anlyt Media",
+        "email": "hello@anlytmedia.in",
+        "phones": [
+            "+917092828370",
+            "+918428524861"
+        ],
+        "address": "18/16/3, Elavuvilai Jn, Marthandam, TN 629191, India",
+        "address_link": null,
+        "logo": "/app-bar-logo.svg",
+        "bgLogo": "bg-slate-500",
+        "bgColor": "from-slate-600 to-slate-800 card-bg",
+        "textColor": "text-white",
+        "cardColor": "bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]",
+        "buttonColor": "bg-slate-500",
+        "enableContactButton": true,
+        "enableSocialLinks": true,
+        "socialLinks": {
+            "instagram": "https://www.instagram.com/anlytmedia",
+            "facebook": "https://www.facebook.com/anlytmedia",
+            "linkedin": "https://www.linkedin.com/company/anlytmedia",
+            "twitter": "https://www.twitter.com/anlytmedia"
+        },
+        "endpoint": "sayanan"
+    },
+    {
+        "id": 12,
+        "created_at": "2025-06-20T11:36:32.83245+00:00",
+        "name": "SRIRAM R",
+        "position": "Director",
+        "org": "SP INSULATION ENGINEERING",
+        "email": "spinsulationsengineers@gmail.com",
+        "phones": [
+            "9994983866",
+            ""
+        ],
+        "address": "No. 490, English Electric Nagar, 19th Street, Chrompet, Chennai-600 044.",
+        "address_link": "https://maps.app.goo.gl/sQf2Tsu8LrE2neLy5",
+        "logo": "https://lh3.googleusercontent.com/pw/AP1GczO_oAxznG1D2U_Leg92yFQSpB4d_GVwwO0vD7zagMTtW_gD_th-DjzK6ImXNbqIMDpny1xNH-r7BxAHMNt7OEKsINfaNXZFkpQCUPuR0AQBcXAwyIU=w2400",
+        "bgLogo": "bg-red-200",
+        "bgColor": "from-slate-600 to-slate-800",
+        "textColor": "text-black",
+        "cardColor": "bg-red-100",
+        "buttonColor": "bg-red-200",
+        "enableContactButton": true,
+        "enableSocialLinks": false,
+        "socialLinks": {
+            "instagram": "",
+            "facebook": "",
+            "linkedin": "",
+            "twitter": ""
+        },
+        "endpoint": "spinsulation"
+    },
+    {
+        "id": 13,
+        "created_at": "2025-06-23T06:37:13.346584+00:00",
+        "name": "Kutty Nadar Jewellery",
+        "position": "SINCE 1969",
+        "org": "Kutty Nadar Jewellery",
+        "email": "",
+        "phones": [
+            "04651270353",
+            "9543270353"
+        ],
+        "address": "Vellivilagom, Kanchiracode",
+        "address_link": "https://maps.app.goo.gl/zEbFomSssFKZ6qeq5",
+        "logo": "https://lh3.googleusercontent.com/pw/AP1GczPjbfQPqblvFuOvqeLl0gPQRRHBbiMAFotn0K3pcxjAF4xlwKeF9aTXjc6saULpPWzy2zAX2UVzNyq3j4s0cGQfwqz_9ep4WuyZFM0EaA4UFrh_xWE=w2400",
+        "bgLogo": "bg-orange-800 [&_img]:scale-[1.2]",
+        "bgColor": "from-lime-100 to-yellow-100",
+        "textColor": "text-orange-800",
+        "cardColor": "bg-lime-100 border-orange-800",
+        "buttonColor": "bg-orange-800",
+        "enableContactButton": false,
+        "enableSocialLinks": false,
+        "socialLinks": {
+            "instagram": "",
+            "facebook": "",
+            "linkedin": "",
+            "twitter": ""
+        },
+        "endpoint": "kuttynadarj"
+    },
+    {
+        "id": 11,
+        "created_at": "2025-06-20T11:00:35.932015+00:00",
+        "name": "Riya D'Souza",
+        "position": "UI/UX Designer",
+        "org": "DesignAura Studio",
+        "email": "riya.dsouza@designaura.co",
+        "phones": [
+            "+919845673210",
+            "+919980123456"
+        ],
+        "address": "42, MG Road, Koramangala, Bengaluru, Karnataka 560034, India",
+        "address_link": "https://maps.google.com/?q=42+MG+Road+Koramangala+Bengaluru",
+        "logo": "",
+        "bgLogo": "bg-purple-900",
+        "bgColor": "from-slate-600 to-slate-800",
+        "textColor": "text-[color:hsl(120,50%,50%)]",
+        "cardColor": "bg-rose-600",
+        "buttonColor": "bg-slate-500",
+        "enableContactButton": false,
+        "enableSocialLinks": true,
+        "socialLinks": {
+            "instagram": "https://instagram.com/riya.designs",
+            "facebook": "",
+            "linkedin": "",
+            "twitter": "https://twitter.com/riya_uiux"
+        },
+        "endpoint": "riya"
+    }
+]
