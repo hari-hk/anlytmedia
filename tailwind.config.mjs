@@ -25,6 +25,9 @@ export default {
     {
       pattern: /^bg-gradient-to-(r|l|t|b|tr|tl|br|bl)$/,
     },
+    {
+      pattern: /^scale-(0|50|75|90|95|100|105|110|125|150)$/,
+    },
   ],
   plugins: [],
 };
