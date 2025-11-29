@@ -6,22 +6,20 @@ import styles from './Portfolio.module.scss';
 
 const projects = [
   {
-    title: 'Neon Future',
+    title: 'Cofee Maker',
     category: '3D Modeling',
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://ik.imagekit.io/anlytmedia/coffee.jpg',
   },
   {
-    title: 'Eco Package',
+    title: 'Package Design',
     category: 'Packaging',
     image:
       'https://ik.imagekit.io/anlytmedia/ananda-sayanan-6hIn0FJIWks-unsplash.jpg',
   },
   {
-    title: 'Tech Corp',
-    category: 'Branding',
-    image:
-      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
+    title: 'Tower Toaster',
+    category: '3D Modeling',
+    image: 'https://ik.imagekit.io/anlytmedia/Tower%20Toasters.jpg',
   },
   {
     title: 'Urban Style',
@@ -30,16 +28,14 @@ const projects = [
       'https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1000&auto=format&fit=crop',
   },
   {
-    title: 'Abstract Flow',
+    title: 'Product Design',
     category: 'Art Direction',
-    image:
-      'https://images.unsplash.com/photo-1558655146-d09347e0d7a8?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://ik.imagekit.io/anlytmedia/Cup%20Exploded.png',
   },
   {
-    title: 'Cyber Identity',
+    title: 'Victory Knives',
     category: 'Logo Design',
-    image:
-      'https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://ik.imagekit.io/anlytmedia/VictoryKnives%20SH.png',
   },
 ];
 
