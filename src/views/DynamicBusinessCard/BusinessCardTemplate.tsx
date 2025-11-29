@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { BusinessCardProps } from '@/views/BusinessCard/BusinessCard';
 import BUSINESS_CARDS from './business-card-data.json';
 import CardTemplate from '@/components/CardGallery/CardTemplate';
-import { isNumber } from '@tsparticles/engine';
 
 interface BusinessCardTemplate extends BusinessCardProps {
   id: string;
@@ -52,11 +51,16 @@ export default function BusinessCardTemplate({
     return <div className='text-center'>Business card not found</div>;
   }
 
+  function isNumber(value: string | undefined): boolean {
+    if (!value) return false;
+    return !isNaN(Number(value));
+  }
+
   return (
     <div className='min-h-screen bg-slate-100 lg:p-8 sm:p-1 font-sans flex items-center'>
       <div className='max-w-md w-full m-auto '>
         <CardTemplate
-          variant={isNumber(+templateId) ? +templateId : 1}
+          variant={isNumber(templateId) ? +templateId : 1}
           data={data}
         />
       </div>
