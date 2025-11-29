@@ -6,7 +6,7 @@ import styles from './Portfolio.module.scss';
 
 const projects = [
   {
-    title: 'Cofee Maker',
+    title: 'Coffee Maker',
     category: '3D Modeling',
     image: 'https://ik.imagekit.io/anlytmedia/coffee.jpg',
   },
