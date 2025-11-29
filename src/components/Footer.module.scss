@@ -1,0 +1,84 @@
+@import '../styles/variables';
+
+.footer {
+  background: $color-dark-gray;
+  padding: 4rem 0 2rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  .container {
+    @include container;
+  }
+
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .brand {
+    max-width: 300px;
+
+    .logo {
+      font-family: $font-display;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $color-text;
+      margin-bottom: 1rem;
+      display: block;
+
+      span {
+        color: $color-primary;
+      }
+    }
+
+    p {
+      color: rgba($color-text, 0.7);
+      line-height: 1.6;
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      h4 {
+        color: $color-text;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: rgba($color-text, 0.7);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2rem;
+    text-align: center;
+    
+    p {
+      color: rgba($color-text, 0.5);
+      font-size: 0.9rem;
+    }
+  }
+}

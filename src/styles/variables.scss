@@ -1,0 +1,24 @@
+// Colors
+$color-bg: #0a0a0a;
+$color-text: #ffffff;
+$color-primary: #009ccc; // Custom Blue
+$color-secondary: #9d00ff; // Purple
+$color-accent: #ffd700; // Gold
+$color-dark-gray: #1a1a1a;
+
+// Fonts
+$font-main: 'Inter', sans-serif;
+$font-display: 'Playfair Display', serif;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}

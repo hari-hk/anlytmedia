@@ -3,6 +3,12 @@ import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import SmoothScroll from '@/components/SmoothScroll';
+import CustomCursor from '@/components/ui/CustomCursor';
+import Grain from '@/components/ui/Grain';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+
 import './globals.css';
 
 const geistSans = Geist({
@@ -45,7 +51,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SmoothScroll />
+        <CustomCursor />
+        <Grain />
+        <Navigation />
         {children}
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>

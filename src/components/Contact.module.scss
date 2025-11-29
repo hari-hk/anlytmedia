@@ -1,0 +1,73 @@
+@import '../styles/variables';
+
+.contact {
+  padding: 8rem 0;
+  background: linear-gradient(to bottom, $color-bg, darken($color-bg, 5%));
+
+  .container {
+    @include container;
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: $color-text;
+    }
+
+    p {
+      color: rgba($color-text, 0.7);
+      margin-bottom: 3rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: $color-text;
+      font-family: $font-main;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      &::placeholder {
+        color: rgba($color-text, 0.4);
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+}

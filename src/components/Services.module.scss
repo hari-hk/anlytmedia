@@ -1,0 +1,94 @@
+@import '../styles/variables';
+
+.services {
+  padding: 8rem 0;
+  background: $color-bg;
+  position: relative;
+
+  .container {
+    @include container;
+  }
+
+  .header {
+    margin-bottom: 5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: $color-text;
+    }
+
+    p {
+      color: rgba($color-text, 0.7);
+      font-size: 1.1rem;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-5px);
+      border-color: rgba($color-primary, 0.3);
+
+      .line {
+        width: 100%;
+      }
+
+      .number {
+        color: $color-primary;
+        opacity: 0.2;
+      }
+    }
+
+    .number {
+      font-family: $font-display;
+      font-size: 4rem;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      color: rgba(255, 255, 255, 0.05);
+      transition: all 0.4s ease;
+      line-height: 1;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: $color-text;
+      position: relative;
+      z-index: 1;
+    }
+
+    p {
+      color: rgba($color-text, 0.7);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $color-primary;
+      transition: width 0.4s ease;
+    }
+  }
+}

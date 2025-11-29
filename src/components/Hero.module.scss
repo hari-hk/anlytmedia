@@ -1,0 +1,170 @@
+@import '../styles/variables';
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 80px; // Account for fixed nav
+
+  .container {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+
+    @media (max-width: 968px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+
+  .content {
+    h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      
+      span {
+        color: transparent;
+        -webkit-text-stroke: 1px $color-primary;
+        position: relative;
+        
+        &::after {
+          content: 'Beyond Dimensions';
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: $color-primary;
+          opacity: 0.1;
+          filter: blur(5px);
+        }
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: rgba($color-text, 0.8);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      line-height: 1.6;
+
+      @media (max-width: 968px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 1.5rem;
+      
+      @media (max-width: 968px) {
+        justify-content: center;
+      }
+    }
+  }
+
+  .visual {
+    position: relative;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+
+    .prism {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      transform-style: preserve-3d;
+      animation: rotate 20s infinite linear;
+
+      .face {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba($color-primary, 0.1);
+        border: 2px solid $color-primary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-primary;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 0 20px rgba($color-primary, 0.2);
+
+        &:nth-child(1) { transform: translateZ(100px); }
+        &:nth-child(2) { transform: rotateY(120deg) translateZ(100px); }
+        &:nth-child(3) { transform: rotateY(240deg) translateZ(100px); }
+      }
+    }
+
+    .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba($color-primary, 0.2) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: -1;
+    }
+  }
+
+  .scrollIndicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+
+    span {
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, $color-primary, transparent);
+    }
+  }
+  .floatingParticles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: $color-primary;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $color-primary;
+      animation: float 10s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotateX(20deg) rotateY(0deg); }
+  to { transform: rotateX(20deg) rotateY(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+  50% { transform: translateY(-50px) translateX(20px); opacity: 1; }
+}

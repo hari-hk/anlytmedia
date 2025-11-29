@@ -1,10 +1,5 @@
 import { memo } from 'react';
-import dynamic from 'next/dynamic';
-
-const FacebookIcon = dynamic(() => import('@/components/icons/fb'));
-const InstagramIcon = dynamic(() => import('@/components/icons/instagram'));
-const LinkedInIcon = dynamic(() => import('@/components/icons/linkedin'));
-const TwitterIcon = dynamic(() => import('@/components/icons/twitter'));
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 function SocialIconsView({
   url,
@@ -20,14 +15,14 @@ function SocialIconsView({
 
   switch (iconName) {
     case 'instagram':
-      return <InstagramIcon color={color} />;
+      return <Instagram color={color} />;
     case 'facebook':
     case 'fb':
-      return <FacebookIcon color={color} />;
+      return <Facebook color={color} />;
     case 'linkedin':
-      return <LinkedInIcon color={color} />;
+      return <Linkedin color={color} />;
     case 'twitter':
-      return <TwitterIcon color={color} />;
+      return <Twitter color={color} />;
     default:
       return <></>;
   }

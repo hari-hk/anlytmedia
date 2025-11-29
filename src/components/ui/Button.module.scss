@@ -1,0 +1,60 @@
+@import '../../styles/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: $font-main;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &.primary {
+    background: $color-primary;
+    color: $color-bg;
+    
+    &:hover {
+      background: lighten($color-primary, 10%);
+      box-shadow: 0 0 15px rgba($color-primary, 0.5);
+    }
+  }
+
+  &.secondary {
+    background: $color-secondary;
+    color: #fff;
+
+    &:hover {
+      background: lighten($color-secondary, 10%);
+      box-shadow: 0 0 15px rgba($color-secondary, 0.5);
+    }
+  }
+
+  &.outline {
+    background: transparent;
+    border: 1px solid $color-primary;
+    color: $color-primary;
+
+    &:hover {
+      background: rgba($color-primary, 0.1);
+    }
+  }
+
+  &.sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &.md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &.lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}

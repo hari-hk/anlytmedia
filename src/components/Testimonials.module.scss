@@ -1,0 +1,66 @@
+@import '../styles/variables';
+
+.testimonials {
+  padding: 8rem 0;
+  background: $color-dark-gray;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    @include container;
+  }
+
+  .header {
+    margin-bottom: 5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 3rem;
+      color: $color-text;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .quote {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      font-style: italic;
+      color: rgba($color-text, 0.9);
+    }
+
+    .author {
+      display: flex;
+      flex-direction: column;
+
+      strong {
+        font-size: 1.1rem;
+        color: $color-primary;
+        margin-bottom: 0.25rem;
+      }
+
+      span {
+        font-size: 0.9rem;
+        color: rgba($color-text, 0.6);
+      }
+    }
+  }
+}

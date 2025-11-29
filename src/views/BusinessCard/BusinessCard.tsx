@@ -6,9 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 import './style.css';
-import EmailIcon from '@/components/icons/email';
-import PhoneIcon from '@/components/icons/phone';
-import LocationIcon from '@/components/icons/location';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
 // Dynamically import SocialIconsView with an expected prop signature.
 const SocialIconsView = dynamic(
@@ -197,7 +195,7 @@ function BusinessCard(props: BusinessCardProps) {
               >
                 {email && (
                   <li className='flex items-center gap-2'>
-                    <EmailIcon color={textColor} />
+                    <Mail color={textColor} />
                     <a
                       className='flex items-center gap-2'
                       href={`mailto:${email}`}
@@ -209,7 +207,7 @@ function BusinessCard(props: BusinessCardProps) {
                 {phones &&
                   phones.filter((phone) => phone.trim()).length > 0 && (
                     <li className='flex items-start justify-start gap-2'>
-                      <PhoneIcon color={textColor} />
+                      <Phone color={textColor} />
                       <ul className='list-disc-none'>
                         {phones.map((phone, index) => (
                           <li key={index}>
@@ -221,7 +219,7 @@ function BusinessCard(props: BusinessCardProps) {
                   )}
                 {address && (
                   <li className='flex items-start justify-start gap-2'>
-                    <LocationIcon color={textColor} />
+                    <MapPin color={textColor} />
                     {!address_link && (
                       <span className='text-start'>{address}</span>
                     )}
@@ -273,7 +271,9 @@ function BusinessCard(props: BusinessCardProps) {
           )}
       </div>
 
-      <a href='/' className='mt-5 text-sm'>Powered by Anlytmedia</a>
+      <a href='/' className='mt-5 text-sm'>
+        Powered by Anlytmedia
+      </a>
     </div>
   );
 }
