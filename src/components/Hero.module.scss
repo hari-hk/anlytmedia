@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .hero {
   min-height: 100vh;
@@ -28,12 +28,12 @@
       font-size: clamp(3rem, 5vw, 5rem);
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      
+
       span {
         color: transparent;
         -webkit-text-stroke: 1px $color-primary;
         position: relative;
-        
+
         &::after {
           content: 'Beyond Dimensions';
           position: absolute;
@@ -62,7 +62,7 @@
     .actions {
       display: flex;
       gap: 1.5rem;
-      
+
       @media (max-width: 968px) {
         justify-content: center;
       }
@@ -99,9 +99,15 @@
         backdrop-filter: blur(5px);
         box-shadow: 0 0 20px rgba($color-primary, 0.2);
 
-        &:nth-child(1) { transform: translateZ(100px); }
-        &:nth-child(2) { transform: rotateY(120deg) translateZ(100px); }
-        &:nth-child(3) { transform: rotateY(240deg) translateZ(100px); }
+        &:nth-child(1) {
+          transform: translateZ(100px);
+        }
+        &:nth-child(2) {
+          transform: rotateY(120deg) translateZ(100px);
+        }
+        &:nth-child(3) {
+          transform: rotateY(240deg) translateZ(100px);
+        }
       }
     }
 
@@ -109,7 +115,11 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba($color-primary, 0.2) 0%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba($color-primary, 0.2) 0%,
+        transparent 70%
+      );
       filter: blur(50px);
       z-index: -1;
     }
@@ -160,11 +170,22 @@
 }
 
 @keyframes rotate {
-  from { transform: rotateX(20deg) rotateY(0deg); }
-  to { transform: rotateX(20deg) rotateY(360deg); }
+  from {
+    transform: rotateX(20deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(20deg) rotateY(360deg);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
-  50% { transform: translateY(-50px) translateX(20px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-50px) translateX(20px);
+    opacity: 1;
+  }
 }

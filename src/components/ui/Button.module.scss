@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
+@use 'sass:color';
 
 .button {
   display: inline-flex;
@@ -16,9 +17,9 @@
   &.primary {
     background: $color-primary;
     color: $color-bg;
-    
+
     &:hover {
-      background: lighten($color-primary, 10%);
+      background: color.scale($color-primary, $lightness: 10%);
       box-shadow: 0 0 15px rgba($color-primary, 0.5);
     }
   }
@@ -28,7 +29,7 @@
     color: #fff;
 
     &:hover {
-      background: lighten($color-secondary, 10%);
+      background: color.scale($color-secondary, $lightness: 10%);
       box-shadow: 0 0 15px rgba($color-secondary, 0.5);
     }
   }
