@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon, TwitterIcon } from '@/components/icons';
 
 function SocialIconsView({
   url,
@@ -8,6 +8,10 @@ function SocialIconsView({
   url: string;
   color?: string;
 }) {
+
+
+
+
   const match = url.match(
     /(?:https?:\/\/)?(?:www\.)?(instagram|facebook|fb|linkedin|twitter|x|youtube|tiktok|threads)\.com/i
   );
@@ -15,14 +19,15 @@ function SocialIconsView({
 
   switch (iconName) {
     case 'instagram':
-      return <Instagram color={color} />;
+      return <InstagramIcon color={color} />;
     case 'facebook':
     case 'fb':
-      return <Facebook color={color} />;
+      return <FacebookIcon
+        color={color} />;
     case 'linkedin':
-      return <Linkedin color={color} />;
+      return <LinkedinIcon color={color} />;
     case 'twitter':
-      return <Twitter color={color} />;
+      return <TwitterIcon color={color} />;
     default:
       return <></>;
   }

@@ -5,3 +5,12 @@
     radial-gradient(ellipse at bottom, #004a4a, transparent),
     radial-gradient(ellipse at center, #2c3e50, transparent);
 }
+
+.business-card-root ul,
+.business-card-root li {
+  list-style: none;
+}
+
+.business-card-root a {
+  text-decoration: none;
+}

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
-import './style.css';
+import './style.scss';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 // Dynamically import SocialIconsView with an expected prop signature.
@@ -163,7 +163,7 @@ function BusinessCard(props: BusinessCardProps) {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b ${bgColor}`}
+      className={`business-card-root min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b ${bgColor}`}
     >
       <div ref={cardRef}>
         <div
@@ -208,7 +208,7 @@ function BusinessCard(props: BusinessCardProps) {
                   phones.filter((phone) => phone.trim()).length > 0 && (
                     <li className='flex items-start justify-start gap-2'>
                       <Phone color={textColor} />
-                      <ul className='list-disc-none'>
+                      <ul className='list-none'>
                         {phones.map((phone, index) => (
                           <li key={index}>
                             <a href={`tel:${phone}`}>{phone}</a>
