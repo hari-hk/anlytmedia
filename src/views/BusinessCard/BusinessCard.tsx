@@ -195,7 +195,7 @@ function BusinessCard(props: BusinessCardProps) {
               >
                 {email && (
                   <li className='flex items-center gap-2'>
-                    <Mail color={textColor} />
+                    <Mail className={textColor} />
                     <a
                       className='flex items-center gap-2'
                       href={`mailto:${email}`}
@@ -207,7 +207,7 @@ function BusinessCard(props: BusinessCardProps) {
                 {phones &&
                   phones.filter((phone) => phone.trim()).length > 0 && (
                     <li className='flex items-start justify-start gap-2'>
-                      <Phone color={textColor} />
+                      <Phone className={textColor} />
                       <ul className='list-none'>
                         {phones.map((phone, index) => (
                           <li key={index}>
@@ -219,7 +219,7 @@ function BusinessCard(props: BusinessCardProps) {
                   )}
                 {address && (
                   <li className='flex items-start justify-start gap-2'>
-                    <MapPin color={textColor} />
+                    <MapPin className={textColor} />
                     {!address_link && (
                       <span className='text-start'>{address}</span>
                     )}
