@@ -2,15 +2,27 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Anlyt Media',
+  title: 'Terms of Service',
   description: 'Terms of Service for Anlyt Media. Please read these terms carefully before using our services.',
+  alternates: {
+    canonical: 'https://anlytmedia.com/terms',
+  },
+  openGraph: {
+    title: 'Terms of Service | Anlyt Media',
+    description: 'Terms of Service for Anlyt Media. Please read these terms carefully before using our services.',
+    url: 'https://anlytmedia.com/terms',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function TermsOfService() {
   return (
     <main className="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white">Terms of Service</h1>
-      
+
       <div className="space-y-8 text-gray-300">
         <section>
           <h2 className="text-2xl font-semibold mb-4 text-white">1. Agreement to Terms</h2>
@@ -53,7 +65,7 @@ export default function TermsOfService() {
             These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
           </p>
         </section>
-        
+
         <p className="text-sm text-gray-500 mt-8">
           Last updated: {new Date().toLocaleDateString()}
         </p>

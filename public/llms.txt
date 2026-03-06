@@ -1,0 +1,21 @@
+# Anlyt Media
+
+> Anlyt Media is a creative design studio specializing in 3D modeling, package designing, logo creation, branding, graphic design, web design & development, digital marketing, and social media management. We bring ideas to life with stunning visuals, standout packaging, and impactful digital strategies — helping brands shine and connect with their audience.
+
+## Services
+
+- [Homepage](https://anlytmedia.com/): Main website with portfolio, services, process, and contact information
+- [Privacy Policy](https://anlytmedia.com/privacy): Privacy policy
+- [Terms of Service](https://anlytmedia.com/terms): Terms of service
+
+## Contact
+
+- Email: info@anlytmedia.com
+- Website: https://anlytmedia.com
+
+## Social
+
+- Facebook: https://facebook.com/anlytmedia
+- Instagram: https://instagram.com/anlytmedia
+- LinkedIn: https://linkedin.com/company/anlytmedia
+- X (Twitter): https://x.com/anlytmedia

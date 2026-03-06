@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Anlyt Media',
     images: [
       {
-        url: '/anlyt-icon-512.jpg',
+        url: '/anlyt-icon-512.png',
         width: 512,
         height: 512,
         alt: 'Anlyt Media logo design and branding showcase',
