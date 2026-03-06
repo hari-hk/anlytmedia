@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'Anlyt Media',
     description:
       'Professional logo design, 3D modeling, package design, web design, and marketing services.',
-    url: 'https://anlytmedia.com/',
+    url: 'https://anlytmedia.in/',
     siteName: 'Anlyt Media',
     images: [
       {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: 'https://anlytmedia.com/',
+    canonical: 'https://anlytmedia.in/',
   },
 };
 

@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for Anlyt Media. Learn how we collect, use, and protect your data.',
   alternates: {
-    canonical: 'https://anlytmedia.com/privacy',
+    canonical: 'https://anlytmedia.in/privacy',
   },
   openGraph: {
     title: 'Privacy Policy | Anlyt Media',
     description: 'Privacy Policy for Anlyt Media. Learn how we collect, use, and protect your data.',
-    url: 'https://anlytmedia.com/privacy',
+    url: 'https://anlytmedia.in/privacy',
   },
   robots: {
     index: true,

@@ -4,8 +4,8 @@ const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Anlyt Media',
-    url: 'https://anlytmedia.com',
-    logo: 'https://anlytmedia.com/anlyt-icon-512.png',
+    url: 'https://anlytmedia.in',
+    logo: 'https://anlytmedia.in/anlyt-icon-512.png',
     description:
         'Anlyt Media specializes in 3D modeling, package designing, logo creation, branding, web design, digital marketing, and social media management. We bring ideas to life with stunning visuals, standout packaging, and impactful digital strategies.',
     contactPoint: {
@@ -25,7 +25,7 @@ const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Anlyt Media',
-    url: 'https://anlytmedia.com',
+    url: 'https://anlytmedia.in',
     description:
         'Professional creative studio offering 3D modeling, package design, logo creation, branding, web design, and digital marketing services.',
     publisher: {
@@ -33,7 +33,7 @@ const websiteSchema = {
         name: 'Anlyt Media',
         logo: {
             '@type': 'ImageObject',
-            url: 'https://anlytmedia.com/anlyt-icon-512.png',
+            url: 'https://anlytmedia.in/anlyt-icon-512.png',
         },
     },
 };
@@ -42,9 +42,9 @@ const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Anlyt Media',
-    url: 'https://anlytmedia.com',
-    logo: 'https://anlytmedia.com/anlyt-icon-512.png',
-    image: 'https://anlytmedia.com/anlyt-icon-512.png',
+    url: 'https://anlytmedia.in',
+    logo: 'https://anlytmedia.in/anlyt-icon-512.png',
+    image: 'https://anlytmedia.in/anlyt-icon-512.png',
     description:
         'Creative design studio specializing in 3D modeling, package designing, logo creation, graphic design, branding, web design & development, digital marketing, and social media management.',
     email: 'info@anlytmedia.com',

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://anlytmedia.com'),
+  metadataBase: new URL('https://anlytmedia.in'),
   title: {
     default: 'Anlyt Media — Creative Design Studio | 3D, Branding & Digital Marketing',
     template: '%s | Anlyt Media',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     'digital marketing', 'package design', '3D modeling', 'creative studio',
     'social media marketing', 'printing services', 'business branding',
   ],
-  authors: [{ name: 'Anlyt Media', url: 'https://anlytmedia.com' }],
+  authors: [{ name: 'Anlyt Media', url: 'https://anlytmedia.in' }],
   creator: 'Anlyt Media',
   publisher: 'Anlyt Media',
   robots: {

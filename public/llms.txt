@@ -4,14 +4,14 @@
 
 ## Services
 
-- [Homepage](https://anlytmedia.com/): Main website with portfolio, services, process, and contact information
-- [Privacy Policy](https://anlytmedia.com/privacy): Privacy policy
-- [Terms of Service](https://anlytmedia.com/terms): Terms of service
+- [Homepage](https://anlytmedia.in/): Main website with portfolio, services, process, and contact information
+- [Privacy Policy](https://anlytmedia.in/privacy): Privacy policy
+- [Terms of Service](https://anlytmedia.in/terms): Terms of service
 
 ## Contact
 
 - Email: info@anlytmedia.com
-- Website: https://anlytmedia.com
+- Website: https://anlytmedia.in
 
 ## Social
 

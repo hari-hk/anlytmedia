@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of Service for Anlyt Media. Please read these terms carefully before using our services.',
   alternates: {
-    canonical: 'https://anlytmedia.com/terms',
+    canonical: 'https://anlytmedia.in/terms',
   },
   openGraph: {
     title: 'Terms of Service | Anlyt Media',
     description: 'Terms of Service for Anlyt Media. Please read these terms carefully before using our services.',
-    url: 'https://anlytmedia.com/terms',
+    url: 'https://anlytmedia.in/terms',
   },
   robots: {
     index: true,
