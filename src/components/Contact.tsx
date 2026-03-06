@@ -23,10 +23,8 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Replace with your actual WhatsApp Business number
-    const phoneNumber = '917092828370'; 
+    const phoneNumber = '917092828370';
     const text = `*New Inquiry from WEB Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Service:* ${formData.service || 'Not specified'}%0A*Message:* ${formData.message}`;
-    
     window.open(`https://wa.me/${phoneNumber}?text=${text}`, '_blank');
   };
 
@@ -38,26 +36,26 @@ export const Contact = () => {
           <p>Let's build something extraordinary together.</p>
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.group}>
-              <input 
-                type='text' 
+              <input
+                type='text'
                 name='name'
-                placeholder='Name' 
-                required 
+                placeholder='Name'
+                required
                 value={formData.name}
                 onChange={handleChange}
               />
-              <input 
-                type='email' 
+              <input
+                type='email'
                 name='email'
-                placeholder='Email' 
-                required 
+                placeholder='Email'
+                required
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
-            <select 
+            <select
               name='service'
-              required 
+              required
               value={formData.service}
               onChange={handleChange}
             >

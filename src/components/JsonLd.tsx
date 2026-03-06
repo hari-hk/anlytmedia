@@ -10,7 +10,8 @@ const organizationSchema = {
         'Anlyt Media specializes in 3D modeling, package designing, logo creation, branding, web design, digital marketing, and social media management. We bring ideas to life with stunning visuals, standout packaging, and impactful digital strategies.',
     contactPoint: {
         '@type': 'ContactPoint',
-        email: 'info@anlytmedia.com',
+        telephone: '+91-7092828370',
+        email: 'anlytmedia@gmail.com',
         contactType: 'customer service',
     },
     sameAs: [
@@ -47,7 +48,8 @@ const localBusinessSchema = {
     image: 'https://anlytmedia.in/anlyt-icon-512.png',
     description:
         'Creative design studio specializing in 3D modeling, package designing, logo creation, graphic design, branding, web design & development, digital marketing, and social media management.',
-    email: 'info@anlytmedia.com',
+    email: 'anlytmedia@gmail.com',
+    telephone: '+91-7092828370',
     sameAs: [
         'https://facebook.com/anlytmedia',
         'https://instagram.com/anlytmedia',

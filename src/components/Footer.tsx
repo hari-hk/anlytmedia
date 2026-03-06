@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.top}>
-          <div className={styles.brand}>
+          <div className={styles.brand} title="Anlyt Media">
             <Link href='/' className={styles.logo}>
               ANLYT<span>MEDIA</span>
             </Link>
@@ -27,6 +27,7 @@ export const Footer = () => {
             </div>
             <div className={styles.column}>
               <h4>Connect</h4>
+              <a href='tel:+917092828370'>+91 7092828370</a>
               <a
                 href='https://facebook.com/anlytmedia'
                 target='_blank'
