@@ -12,6 +12,11 @@ export const Footer = () => {
               ANLYT<span>MEDIA</span>
             </Link>
             <p>Elevating Brands Beyond Dimensions.</p>
+            <a href='tel:+917092828370' style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '0.5rem', display: 'block' }}>+91 7092828370</a>
+            <p style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '0.25rem' }}>
+              Nelveli Road, Elavuvilai Junction,<br />
+              Kanyakumari, Tamil Nadu 629171
+            </p>
           </div>
           <div className={styles.links}>
             <div className={styles.column}>
@@ -27,7 +32,6 @@ export const Footer = () => {
             </div>
             <div className={styles.column}>
               <h4>Connect</h4>
-              <a href='tel:+917092828370'>+91 7092828370</a>
               <a
                 href='https://facebook.com/anlytmedia'
                 target='_blank'

@@ -50,6 +50,20 @@ const localBusinessSchema = {
         'Creative design studio specializing in 3D modeling, package designing, logo creation, graphic design, branding, web design & development, digital marketing, and social media management.',
     email: 'anlytmedia@gmail.com',
     telephone: '+91-7092828370',
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Nelveli Road, Elavuvilai Junction',
+        addressLocality: 'Elavuvilai, Kanyakumari',
+        addressRegion: 'Tamil Nadu',
+        postalCode: '629171',
+        addressCountry: 'IN',
+    },
+    geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 8.1833,
+        longitude: 77.4119,
+    },
+    areaServed: 'IN',
     sameAs: [
         'https://facebook.com/anlytmedia',
         'https://instagram.com/anlytmedia',
